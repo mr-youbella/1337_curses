@@ -4,9 +4,9 @@ Projects I completed at School 1337 included in Curses 42.
 
 ![Youbella's 42 stats](https://badge.mediaplus.ma/black/Youbella)
 
-## Projects and Solutions
+## Projects
 
-| Projects | Solutions |
+| Projects | Points |
 | --- | --- |
 | [libft](https://github.com/mr-youbella/1337_Pool/tree/main/Shell00) | 125 |
 | [ft_printf](https://github.com/mr-youbella/1337_Pool/tree/main/Shell01) | 110 |
