@@ -8,12 +8,14 @@ Projects I completed at School 1337 included in Curses 42.
 
 | Projects | Points |
 | --- | --- |
-| [libft](https://github.com/mr-youbella/1337_Pool/tree/main/Shell00) | 125 |
-| [ft_printf](https://github.com/mr-youbella/1337_Pool/tree/main/Shell01) | 110 |
-| [get_next_line](https://github.com/mr-youbella/1337_Pool/tree/main/C00) | 125 |
-| [minitalk](https://github.com/mr-youbella/1337_Pool/tree/main/C01) | 125 |
-| [so_long](https://github.com/mr-youbella/1337_Pool/tree/main/C02) | 125 |
-| [push_swap](https://github.com/mr-youbella/1337_Pool/tree/main/C03) | 125 |
-| [philosophers](https://github.com/mr-youbella/1337_Pool/tree/main/C04) | 125 |
+| [libft](https://github.com/mr-youbella/1337_curses/tree/main/libft) | 125 |
+| [ft_printf](https://github.com/mr-youbella/1337_curses/tree/main/ft_printf) | 110 |
+| [get_next_line](https://github.com/mr-youbella/1337_curses/tree/main/get_next_line) | 125 |
+| [minitalk](https://github.com/mr-youbella/1337_curses/tree/main/minitalk) | 125 |
+| [so_long](https://github.com/mr-youbella/1337_curses/tree/main/so_long) | 125 |
+| [push_swap](https://github.com/mr-youbella/1337_curses/tree/main/push_swap) | 125 |
+| [philosophers](https://github.com/mr-youbella/1337_curses/tree/main/philosophers) | 125 |
+| [minishell](https://github.com/mr-youbella/1337_curses/tree/main/minishell) | 101 |
+| [cpp00](https://github.com/mr-youbella/1337_curses/tree/main/cpp00) | 100 |
 | Exam Rank 02 | 100 |
 | Exam Rank 03 | 100 |
