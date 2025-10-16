@@ -16,6 +16,7 @@ Projects I completed at School 1337 included in Curses 42.
 | [push_swap](https://github.com/mr-youbella/1337_curses/tree/main/push_swap) | 125 |
 | [philosophers](https://github.com/mr-youbella/1337_curses/tree/main/philosophers) | 125 |
 | [minishell](https://github.com/mr-youbella/1337_curses/tree/main/minishell) | 101 |
+| [cub3D](https://github.com/mr-youbella/1337_curses/tree/main/cub3D) | 125 |
 | [cpp00](https://github.com/mr-youbella/1337_curses/tree/main/cpp00) | 100 |
 | Exam Rank 02 | 100 |
 | Exam Rank 03 | 100 |
