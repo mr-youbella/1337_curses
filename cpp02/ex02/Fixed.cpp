@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 23:38:25 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/19 17:51:46 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/01 22:02:08 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,16 @@ Fixed::Fixed(const Fixed &copyFixed)
 	*this = copyFixed;
 }
 
-Fixed	&Fixed::operator=(const Fixed &copyFixed)
+Fixed::Fixed(int value)
 {
-	std::cout << "Copy assignment operator called\n";
-	if (this != &copyFixed)
-		this->_value = copyFixed.getRawBits();
-	return (*this);
+	std::cout << "Int constructor called\n";
+	_value = value << bit;
+}
+
+Fixed::Fixed(float value)
+{
+	std::cout << "Float constructor called\n";
+	_value = roundf(value * (1 << this->bit));
 }
 
 int		Fixed::getRawBits(void) const
@@ -44,18 +48,6 @@ void	Fixed::setRawBits(int const raw)
 	_value = raw;
 }
 
-Fixed::Fixed(int value)
-{
-	std::cout << "Int constructor called\n";
-	_value = value << bit;
-}
-
-Fixed::Fixed(float value)
-{
-	std::cout << "Float constructor called\n";
-	_value = roundf(value * (1 << this->bit));
-}
-
 float	Fixed::toFloat(void) const
 {
 	return ((float)_value / (1 << bit));
@@ -66,6 +58,50 @@ int		Fixed::toInt(void) const
 	return (_value >> bit);
 }
 
+Fixed	&Fixed::operator=(const Fixed &copyFixed)
+{
+	std::cout << "Copy assignment operator called\n";
+	if (this != &copyFixed)
+		this->_value = copyFixed.getRawBits();
+	return (*this);
+}
+
+bool			Fixed::operator>(const Fixed& other) const{}
+
+bool			Fixed::operator<(const Fixed& other) const{}
+
+bool			Fixed::operator>=(const Fixed& other) const{}
+
+bool			Fixed::operator<=(const Fixed& other) const{}
+
+bool			Fixed::operator==(const Fixed& other) const{}
+
+bool			Fixed::operator!=(const Fixed& other) const{}
+
+Fixed			Fixed::operator+(const Fixed& other) const{}
+
+Fixed			Fixed::operator-(const Fixed& other) const{}
+
+Fixed			Fixed::operator*(const Fixed& other) const{}
+
+Fixed			Fixed::operator/(const Fixed& other) const{}
+
+Fixed			&Fixed::operator++(){}
+
+Fixed			Fixed::operator++(int){}
+
+Fixed			&Fixed::operator--(){}
+
+Fixed			Fixed::operator--(int){}
+
+Fixed			&Fixed::min(Fixed& a, Fixed& b){}
+
+const Fixed		&Fixed::min(const Fixed& a, const Fixed& b){}
+
+Fixed			&Fixed::max(Fixed& a, Fixed& b){}
+
+const Fixed		&Fixed::max(const Fixed& a, const Fixed& b){}
+
 std::ostream	&operator<<(std::ostream &out, Fixed const &fixed)
 {
 	out << fixed.toFloat();
@@ -74,5 +110,5 @@ std::ostream	&operator<<(std::ostream &out, Fixed const &fixed)
 
 Fixed::~Fixed(void)
 {
-	std::cout << "   \033[32m   Destructor called\n";
+	std::cout << "Destructor called\n";
 }
