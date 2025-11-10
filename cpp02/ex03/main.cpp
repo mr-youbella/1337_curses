@@ -2,17 +2,13 @@
 
 int main()
 {
-	Point a(0, 0);
-	Point b(10, 0);
-	Point c(0, 10);
+	Point a, b(10, 0), c(5, 5);
+	Point p(5, 4);
 
-	Point inside(3, 3);
-	Point outside(10, 10);
-	Point edge(5, 0);
-
-	std::cout << "Inside (3,3): " << bsp(a, b, c, inside) << std::endl;
-	std::cout << "Outside (10,10): " << bsp(a, b, c, outside) << std::endl;
-	std::cout << "On edge (5,0): " << bsp(a, b, c, edge) << std::endl;
+	if (bsp(a, b, c, p))
+		std::cout << "\033[32;1mInside\033[0m\n";
+	else
+		std::cout << "\033[31;1mOutside\033[0m\n";
 
 	return 0;
 }

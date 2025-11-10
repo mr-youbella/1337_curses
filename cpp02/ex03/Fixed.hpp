@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 23:38:25 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/19 17:39:42 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/10 14:34:50 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Fixed
 		int					_value;
 		static const int	bit;
 	public:
-		Fixed();
+		Fixed(void);
 		Fixed(int value);
 		Fixed(float value);
 		Fixed(const Fixed &copyFixed);
@@ -31,7 +31,7 @@ class Fixed
 		float				toFloat(void) const;
 		int					toInt(void) const;
 		int					getRawBits(void) const;
-		void				setRawBits(int const raw);
+		void				setRawBits(const int raw);
 		bool				operator>(const Fixed& other) const;
 		bool				operator<(const Fixed& other) const;
 		bool				operator>=(const Fixed& other) const;
@@ -50,7 +50,7 @@ class Fixed
 		static const Fixed	&min(const Fixed& a, const Fixed& b);
 		static Fixed		&max(Fixed& a, Fixed& b);
 		static const Fixed	&max(const Fixed& a, const Fixed& b);
-		~Fixed();
+		~Fixed(void);
 };
 
 std::ostream	&operator<<(std::ostream &out, Fixed const &fixed);

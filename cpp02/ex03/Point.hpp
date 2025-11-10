@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:43:36 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/01 21:20:29 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/10 14:13:00 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Point
 		Point(float x, float y);
 		Point(const Point &copyPoint);
 		Point	&operator=(const Point &copyPoint);
-		Fixed	getX();
-		Fixed	getY();
+		Fixed	getX() const;
+		Fixed	getY() const;
 		~Point();
 };
 

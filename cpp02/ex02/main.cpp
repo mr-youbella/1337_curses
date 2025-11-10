@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 23:53:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/18 18:49:20 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/10 13:06:54 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 
 int main(void)
 {
-	Fixed a;
-	Fixed const b(10);
-	Fixed const c(42.42f);
-	Fixed const d(b);
-	a = Fixed(1234.4321f);
-	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	return 0;
+	Fixed a(13);
+	Fixed b(a);
+	Fixed k(37);
+	Fixed c = b;
+	Fixed d;
+
+	std::cout << a.toInt() << '\n';
+	std::cout << b.toInt() << '\n';
+
+	d = a.min(b, k);
+	std::cout << d.toInt() << '\n';
+	d = a.max(b, k);
+	std::cout << d.toInt() << '\n';
+	
+	std::cout << (a == b) << '\n';
+	std::cout << (a > b) << '\n';
+
+	std::cout << a + b << '\n';
+
 }
