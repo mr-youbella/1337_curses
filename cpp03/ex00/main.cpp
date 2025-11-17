@@ -5,32 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/17 23:53:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/14 12:03:25 by youbella         ###   ########.fr       */
+/*   Created: 2025/11/16 22:10:27 by youbella          #+#    #+#             */
+/*   Updated: 2025/11/16 22:10:28 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
 int main(void)
 {
-	Fixed a(13);
-	Fixed b(a);
-	Fixed k(37);
-	Fixed c = b;
-	Fixed d;
+	ClapTrap	a;
 
-	std::cout << a.toInt() << '\n';
-	std::cout << b.toInt() << '\n';
-
-	d = Fixed::min(b, k);
-	std::cout << d.toInt() << '\n';
-	d = Fixed::max(b, k);
-	std::cout << d.toInt() << '\n';
-	
-	std::cout << (a == b) << '\n';
-	std::cout << (a > b) << '\n';
-
-	std::cout << a + b << '\n';
-
+	a.takeDamage(1);
+	for (int i = 0; i < 10; i++)
+		a.attack("younes");
+	a.attack("younes");
+	for (int i = 0; i < 9; i++)
+		a.takeDamage(1);
+	a.beRepaired(10);
+	a.takeDamage(1);
+    return 0;
 }

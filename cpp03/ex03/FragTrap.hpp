@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/17 23:53:07 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/14 12:03:25 by youbella         ###   ########.fr       */
+/*   Created: 2025/11/16 22:29:54 by youbella          #+#    #+#             */
+/*   Updated: 2025/11/16 22:29:55 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-int main(void)
+# include "ClapTrap.hpp"
+
+class	FragTrap: virtual public	ClapTrap
 {
-	Fixed a(13);
-	Fixed b(a);
-	Fixed k(37);
-	Fixed c = b;
-	Fixed d;
+	public:
+		FragTrap();
+		FragTrap(std::string name);
+		FragTrap(const FragTrap &frag_trap);
+		FragTrap	&operator=(const FragTrap &frag_trap);
+		void		attack(const std::string &target);
+		void		highFivesGuys(void);
+		~FragTrap();
+};
 
-	std::cout << a.toInt() << '\n';
-	std::cout << b.toInt() << '\n';
-
-	d = Fixed::min(b, k);
-	std::cout << d.toInt() << '\n';
-	d = Fixed::max(b, k);
-	std::cout << d.toInt() << '\n';
-	
-	std::cout << (a == b) << '\n';
-	std::cout << (a > b) << '\n';
-
-	std::cout << a + b << '\n';
-
-}
+#endif
