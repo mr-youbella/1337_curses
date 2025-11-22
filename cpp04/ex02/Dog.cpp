@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:34 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/20 17:50:09 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/21 23:42:49 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Dog::Dog(void): Animal()
 	type = "Dog";
 	brain = new Brain;
 }
-Dog::Dog(const Dog &other): Animal(other)
+Dog::Dog(const Dog &other)
 {
 	std::cout << "Copy constructor Dog called\n";
 	*this = other;

@@ -5,67 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 16:38:39 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/20 16:39:02 by youbella         ###   ########.fr       */
+/*   Created: 2025/11/21 17:08:56 by youbella          #+#    #+#             */
+/*   Updated: 2025/11/21 18:56:48 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
-#include "Cure.hpp"
+#include <iostream>
 #include "Character.hpp"
 #include "MateriaSource.hpp"
-#include <iostream>
+#include "Ice.hpp"
+#include "Cure.hpp"
+
+// void	f(){system("leaks materia");}
 
 int main()
 {
-    std::cout << "=== Complete Materia System Test ===\n\n";
-    
-    std::cout << "--- Creating MateriaSource ---\n";
-    IMateriaSource* src = new MateriaSource();
-    
-    std::cout << "\n--- Learning Materias ---\n";
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-    src->learnMateria(new Ice());
-    
-    std::cout << "\n--- Creating Character ---\n";
-    ICharacter* me = new Character("me");
-    
-    std::cout << "\n--- Creating and Equipping Materias ---\n";
-    AMateria* tmp;
-    
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
-    
-    tmp = src->createMateria("fire");
-    if (tmp == NULL) {
-        std::cout << "Failed to create unknown materia type\n";
-    }
-    
-    std::cout << "\n--- Creating Target ---\n";
-    ICharacter* bob = new Character("bob");
-    
-    std::cout << "\n--- Using Materias ---\n";
-    me->use(0, *bob);
-    me->use(1, *bob);
-    
-    std::cout << "\n--- Testing Copy ---\n";
-    MateriaSource src2 = *dynamic_cast<MateriaSource*>(src);
-    AMateria* ice2 = src2.createMateria("ice");
-    if (ice2 != NULL) {
-        std::cout << "Successfully created ice from copied source\n";
-        delete ice2;
-    }
-    
-    std::cout << "\n--- Cleaning Up ---\n";
-    delete bob;
-    delete me;
-    delete src;
-    
-    return 0;
+	// atexit(f);
+	AMateria	*ice = new Ice();
+	std::cout << ice->getType() << '\n';
+
+	AMateria	*ice2 = ice->clone();
+	std::cout << ice->getType() << '\n';
+
+	delete ice;
+	delete ice2;
+
+	// ----------------------------------------------
+
+	MateriaSource	newM;
+	Cure	*newCure = new Cure;
+	newM.learnMateria(newCure);
+	AMateria	*cure = newM.createMateria("cure");
+	std::cout << cure->getType() << '\n';
+
+	delete newCure;
+	delete cure;
+	
+	// ----------------------------------------------
+
+	Character	youbella("youbella");
+	Character	younes("younes");
+
+	std::cout << youbella.getName() << '\n';
+	std::cout << younes.getName() << '\n';
+
+	youbella.equip(new Ice);
+	youbella.equip(new Cure);
+	younes.equip(new Cure);
+
+	youbella.use(0, younes);
+	younes.use(0, youbella);
+	youbella.use(1, younes);
 }

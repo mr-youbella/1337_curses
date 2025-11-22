@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:48 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/20 17:49:41 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/21 18:59:41 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	Dog: public Animal
 	public:
 		Dog(void);
 		Dog(const Dog &other);
-		Dog	&operator=(const Dog &other);
+		Dog		&operator=(const Dog &other);
 		void	makeSound(void) const;
 		~Dog(void);
 };

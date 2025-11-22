@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:45 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/20 17:25:45 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/21 18:59:30 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 
 int main()
 {
-	Cat	*cat1 = new Cat();
-	Cat	*cat2 = new Cat(*cat1);
-	Cat	*cat3 = new Cat();
-	*cat3 = *cat1;
+	Cat	cat1;
+	Cat	cat2;
 
-	delete cat1;
-	delete cat2;
-	delete cat3;
+	cat1 = cat2;
+
+	cat1.makeSound();
+	cat2.makeSound();
 }

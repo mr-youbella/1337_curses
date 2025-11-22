@@ -6,14 +6,14 @@
 #    By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/16 18:21:53 by youbella          #+#    #+#              #
-#    Updated: 2025/11/20 17:54:14 by youbella         ###   ########.fr        #
+#    Updated: 2025/11/21 23:40:34 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp Animal.cpp Brain.cpp Cat.cpp Dog.cpp
+SRC = main.cpp Animal.cpp Brain.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 OBJ_SRC = $(SRC:.cpp=.o)
 
 NAME = brain 
@@ -23,7 +23,7 @@ all: $(NAME)
 $(NAME): $(OBJ_SRC)
 	$(CC) $(CFLAGS) $(OBJ_SRC) -o $(NAME)
 
-%.o: %.cpp Animal.hpp Brain.hpp Cat.hpp Dog.hpp
+%.o: %.cpp Animal.hpp Brain.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
 	$(CC) $(CFLAGS) -c $<
 
 clean:

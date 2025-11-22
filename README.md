@@ -19,6 +19,10 @@ Projects I completed at School 1337 included in Curses 42.
 | [cub3D](https://github.com/mr-youbella/1337_curses/tree/main/cub3D) | 125 |
 | [cpp00](https://github.com/mr-youbella/1337_curses/tree/main/cpp00) | 100 |
 | [cpp01](https://github.com/mr-youbella/1337_curses/tree/main/cpp01) | 100 |
-| [cpp02](https://github.com/mr-youbella/1337_curses/tree/main/cpp02) | XXX |
+| [cpp02](https://github.com/mr-youbella/1337_curses/tree/main/cpp02) | 100 |
+| [cpp03](https://github.com/mr-youbella/1337_curses/tree/main/cpp03) | 100 |
+| [cpp04](https://github.com/mr-youbella/1337_curses/tree/main/cpp04) | 100 |
+| [netPractice](https://github.com/mr-youbella/1337_curses/tree/main/netPractice) | (in progress) |
 | Exam Rank 02 | 100 |
 | Exam Rank 03 | 100 |
+| Exam Rank 04 | 100 |

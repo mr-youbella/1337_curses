@@ -1,12 +1,12 @@
 /* ************************************************************************** */
-/*                                                                            */
+/*	                                                                        */
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:26 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/20 17:49:27 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/21 23:42:10 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Cat::Cat(void): Animal()
 	brain = new Brain;
 }
 
-Cat::Cat(const Cat &other): Animal(other)
+Cat::Cat(const Cat &other)
 {
 	std::cout << "Copy constructor Cat called\n";
 	*this = other;
