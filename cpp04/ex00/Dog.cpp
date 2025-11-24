@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:26 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/21 23:30:54 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/24 15:36:06 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@ Dog::Dog(void): Animal()
 	type = "Dog";
 }
 
-Dog::Dog(const Dog &other)
+Dog::Dog(const Dog &other): Animal(other)
 {
 	std::cout << "Copy constructor Dog called\n";
-	*this = other;
 }
 
-Dog	&Dog::operator=(const Dog &other)
+Dog		&Dog::operator=(const Dog &other)
 {
 	std::cout << "Copy assignment operator Dog called\n";
 	Animal::operator=(other);

@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:34 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/21 23:42:49 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/24 16:50:13 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ Dog::Dog(void): Animal()
 	type = "Dog";
 	brain = new Brain;
 }
-Dog::Dog(const Dog &other)
+
+Dog::Dog(const Dog &other): Animal(other)
 {
 	std::cout << "Copy constructor Dog called\n";
-	*this = other;
+	brain = new Brain(*other.brain);
 }
-Dog	&Dog::operator=(const Dog &other)
+
+Dog		&Dog::operator=(const Dog &other)
 {
 	std::cout << "Copy assignment operator Dog called\n";
 	Animal::operator=(other);
@@ -34,6 +36,7 @@ Dog	&Dog::operator=(const Dog &other)
 	}
 	return (*this);
 }
+
 void	Dog::makeSound(void) const
 {
 	std::cout << "3aaaaaw 3aaaaaw\n";

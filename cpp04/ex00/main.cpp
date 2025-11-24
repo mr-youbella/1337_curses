@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:45 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/21 23:39:17 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/24 15:37:34 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int main()
 		delete i;
 		delete j;
 	}
+	std::cout << '\n';
 	{
 		const WrongAnimal *meta = new WrongAnimal();
 		const WrongAnimal *i = new WrongCat();

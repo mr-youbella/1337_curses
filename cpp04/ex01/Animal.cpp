@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:21 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/20 17:49:08 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/24 16:49:35 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Animal::Animal(void): type("Lion")
 Animal::Animal(const Animal &other)
 {
 	std::cout << "Copy constructor Animal called\n";
-	*this = other;
+	type = other.type;
 }
 
 Animal		&Animal::operator=(const Animal &other)

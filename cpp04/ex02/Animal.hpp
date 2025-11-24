@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:23 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/20 17:49:53 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/23 10:08:18 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class	Animal
 	public:
 		Animal(void);
 		Animal(const Animal &other);
-		Animal	&operator=(const Animal &other);
-		std::string	getType(void) const;
+		Animal			&operator=(const Animal &other);
+		std::string		getType(void) const;
 		virtual void	makeSound(void) const = 0;
 		virtual ~Animal(void);
 };
