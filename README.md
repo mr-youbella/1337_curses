@@ -22,7 +22,7 @@ Projects I completed at School 1337 included in Curses 42.
 | [cpp02](https://github.com/mr-youbella/1337_curses/tree/main/cpp02) | 100 |
 | [cpp03](https://github.com/mr-youbella/1337_curses/tree/main/cpp03) | 100 |
 | [cpp04](https://github.com/mr-youbella/1337_curses/tree/main/cpp04) | 100 |
-| [netPractice](https://github.com/mr-youbella/1337_curses/tree/main/netPractice) | (in progress) |
+| [netPractice](https://github.com/mr-youbella/1337_curses/tree/main/netPractice) | 100 |
 | Exam Rank 02 | 100 |
 | Exam Rank 03 | 100 |
 | Exam Rank 04 | 100 |
