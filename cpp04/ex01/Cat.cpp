@@ -19,13 +19,13 @@ Cat::Cat(void): Animal()
 	brain = new Brain;
 }
 
-Cat::Cat(const Cat &other)
+Cat::Cat(const Cat &other): Animal(other)
 {
 	std::cout << "Copy constructor Cat called\n";
-	*this = other;
+	brain = new Brain(*other.brain);
 }
 
-Cat	&Cat::operator=(const Cat &other)
+Cat		&Cat::operator=(const Cat &other)
 {
 	std::cout << "Copy assignment operator Cat called\n";
 	Animal::operator=(other);

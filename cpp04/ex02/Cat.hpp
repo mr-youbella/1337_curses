@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:28 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/20 17:50:07 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/23 10:09:12 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	Cat: public Animal
 	public:
 		Cat(void);
 		Cat(const Cat &other);
-		Cat	&operator=(const Cat &other);
+		Cat		&operator=(const Cat &other);
 		void	makeSound(void) const;
 		~Cat(void);
 };

@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:20:00 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/21 17:41:44 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/24 16:59:27 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ AMateria::AMateria(const std::string &type): type(type)
 AMateria::AMateria(const AMateria &other)
 {
 	std::cout << "AMateria copy constructor called\n";
-	*this = other;
+	type = other.type;
 }
 
 AMateria & AMateria::operator=(const AMateria &other)

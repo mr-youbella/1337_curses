@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 17:16:25 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/21 18:22:33 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/24 21:38:37 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void 	Character::unequip(int id)
 	if (inventory[id] != NULL)
 	{
 		std::cout << name << " unequipped " << inventory[id]->getType() << " from slot " << id << "\n";
+		delete inventory[id];
 		inventory[id] = NULL;
 	}
 	else

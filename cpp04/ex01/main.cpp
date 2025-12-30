@@ -6,20 +6,38 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:45 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/21 18:59:30 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/24 16:47:28 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
 #include "Dog.hpp"
+#include "Cat.hpp"
 
-int main()
+// void	f() {system("leaks brain");}
+
+int main(void)
 {
-	Cat	cat1;
-	Cat	cat2;
+	// atexit(f);
+	{
+		const int	size = 4;
+		Animal		*animals[size];
 
-	cat1 = cat2;
+		for (int i = 0; i < size / 2; i++)
+			animals[i] = new Dog();
 
-	cat1.makeSound();
-	cat2.makeSound();
+		for (int i = size / 2; i < size; i++)
+			animals[i] = new Cat();
+
+		for (int i = 0; i < size; i++)
+			delete animals[i];
+	}
+	std::cout << '\n';
+	{
+		Cat	*cat = new Cat;	
+		Cat	*cat1 = new Cat;
+
+		*cat1 = *cat;
+		delete cat;
+		delete cat1;
+	}
 }

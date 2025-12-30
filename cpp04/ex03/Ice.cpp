@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:19:58 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/21 17:56:58 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/24 17:00:19 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ Ice::Ice() : AMateria("ice")
 	std::cout << "Ice constructor called\n";
 }
 
-Ice::Ice(const Ice &other)
+Ice::Ice(const Ice &other): AMateria(other)
 {
 	std::cout << "Ice copy constructor called\n";
-	*this = other;
 }
 
 Ice & Ice::operator=(const Ice &other)

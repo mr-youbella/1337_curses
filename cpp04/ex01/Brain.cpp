@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:24:21 by youbella          #+#    #+#             */
-/*   Updated: 2025/11/20 17:01:27 by youbella         ###   ########.fr       */
+/*   Updated: 2025/11/23 09:59:18 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Brain::Brain(void)
 {
 	std::cout << "Constructor Brain called\n";
 	for (int i = 0; i < 100; i++)
-		this->ideas[i] = "Lion";
+		this->ideas[i] = "hmmmmm";
 }
 
 Brain::Brain(const Brain &other)
