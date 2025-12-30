@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 11:53:30 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/27 12:48:32 by youbella         ###   ########.fr       */
+/*   Updated: 2025/12/30 14:56:40 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ class Bureaucrat
 		int			getGrade(void) const;
 		void		incrementGrade();
 		void		decrementGrade();
-		class GradeTooHighException : public std::exception
+		class GradeTooHighException: public std::exception
 		{
 			public:
 				virtual const char *what() const throw();
 		};
-		class GradeTooLowException : public std::exception
+		class GradeTooLowException: public std::exception
 		{
 			public:
 				virtual const char *what() const throw();

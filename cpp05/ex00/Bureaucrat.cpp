@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 12:20:57 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/27 12:49:14 by youbella         ###   ########.fr       */
+/*   Updated: 2025/12/30 14:59:15 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Bureaucrat::Bureaucrat(void): name("default"), grade(13)
 	std::cout << "Default constructor called\n";
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade): name(name), grade(13)
+Bureaucrat::Bureaucrat(std::string name, int grade): name(name)
 {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
@@ -27,7 +27,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade): name(name), grade(13)
 	std::cout << "Name constructor called\n";
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other)
+Bureaucrat::Bureaucrat(const Bureaucrat &other): name(other.name)
 {
 	std::cout << "Copy constructor called\n";
 	*this = other;
