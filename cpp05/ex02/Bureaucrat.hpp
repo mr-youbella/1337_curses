@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 11:53:30 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 10:49:00 by youbella         ###   ########.fr       */
+/*   Updated: 2025/12/31 11:50:06 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <iostream>
 # include <exception>
+# include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -40,6 +43,7 @@ class Bureaucrat
 			public:
 				virtual const char *what() const throw();
 		};
+		void		executeForm(const AForm &form);
 		~Bureaucrat(void);
 };
 

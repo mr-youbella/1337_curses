@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 12:20:57 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 10:49:19 by youbella         ###   ########.fr       */
+/*   Updated: 2025/12/31 10:57:50 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,27 @@ void		Bureaucrat::decrementGrade()
 		grade++;
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()
+const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high!");
 }
 
-const char *Bureaucrat::GradeTooLowException::what() const throw()
+const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low!");
+}
+
+void		Bureaucrat::signForm(Form &form)
+{
+    try
+    {
+        form.beSigned(*this);
+        std::cout << name << " signed " << form.getName() << '\n';
+    }
+    catch (std::exception &e)
+    {
+        std::cout << name << " couldn't sign " << form.getName() << " because " << e.what() << '\n';
+    }
 }
 
 Bureaucrat::~Bureaucrat(void)
