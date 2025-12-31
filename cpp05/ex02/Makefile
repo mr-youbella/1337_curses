@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+         #
+#    By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/27 11:51:28 by youbella          #+#    #+#              #
-#    Updated: 2025/12/31 11:40:15 by youbella         ###   ########.fr        #
+#    Updated: 2025/12/31 16:40:03 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -std=c++98 -Wall -Wextra -Werror
 SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJ_SRC = $(SRC:.cpp=.o)
 
-NAME = form
+NAME = Aform
 
 all: $(NAME)
 

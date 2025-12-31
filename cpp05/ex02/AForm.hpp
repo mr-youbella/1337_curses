@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 11:53:30 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 11:38:40 by youbella         ###   ########.fr       */
+/*   Updated: 2025/12/31 16:29:59 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ class AForm
 			public:
 				virtual const char *what() const throw();
 		};
+		class FormNotSignedException: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
 		virtual void		execute(Bureaucrat const &executor) const = 0;
 		virtual	~AForm(void);
 };

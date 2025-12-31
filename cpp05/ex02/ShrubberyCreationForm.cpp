@@ -3,11 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:45:28 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 11:45:39 by youbella         ###   ########.fr       */
+/*   Updated: 2025/12/31 16:31:37 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("Shrubbery Creation", 145, 137)
+{
+	std::cout << "Default Shrubbery Creation constructor called\n";
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("Shrubbery Creation", 145, 137), target(target)
+{
+	std::cout << "Default Shrubbery Creation constructor params called\n";
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other), target(other.target)
+{
+	std::cout << "Copy Shrubbery Creation constructor called\n";
+}
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
+{
+	std::cout << "Copy Shrubbery Creation assignment operator called\n";
+	(void)other;
+	return (*this);
+}
+
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
+{
+	if (!this->getIsSigned())
+		throw AForm::FormNotSignedException();
+	if (executor.getGrade() > this->getGradeToExecute())
+		throw AForm::GradeTooLowException();
+	std::ofstream	outfile(target + "_shrubbery");
+	if (outfile.is_open())
+	{
+		outfile << "       _-_" << '\n';
+		outfile << "    /~~   ~~\\" << '\n';
+		outfile << " /~~         ~~\\" << '\n';
+		outfile << "{               }" << '\n';
+		outfile << " \\  _-     -_  /" << '\n';
+		outfile << "   ~  \\\\ //  ~" << '\n';
+		outfile << "_- -   | | _- _" << '\n';
+		outfile << "  _ -  | |   -_" << '\n';
+		outfile << "      // \\\\" << '\n';
+		outfile.close();
+		std::cout << "Shrubbery created in " << target << "_shrubbery" << '\n';
+	}
+	else
+		std::cerr << "Error: Could not create file." << '\n';
+}
+
+ShrubberyCreationForm::~ShrubberyCreationForm(void)
+{
+	std::cout << "Shrubbery Creation Destructor called\n";
+}

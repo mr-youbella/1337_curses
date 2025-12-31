@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 12:20:57 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 11:53:16 by youbella         ###   ########.fr       */
+/*   Updated: 2025/12/31 16:30:16 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ AForm::AForm(const std::string name, const int grade_to_sign, const int grade_to
 {
 	if (grade_to_sign < 1 || grade_to_execute < 1)
 		throw AForm::GradeTooHighException();
-    if (grade_to_sign > 150 || grade_to_execute > 150)
+	if (grade_to_sign > 150 || grade_to_execute > 150)
 		throw AForm::GradeTooLowException();
 	std::cout << "Name AForm constructor called\n";
 }
@@ -78,6 +78,11 @@ const char *AForm::GradeTooLowException::what() const throw()
 	return ("Grade too low!");
 }
 
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return "Form is not signed yet!";
+}
+
 AForm::~AForm(void)
 {
 	std::cout << "AForm Destructor called\n";
@@ -85,6 +90,6 @@ AForm::~AForm(void)
 
 std::ostream &operator<<(std::ostream &os, const AForm &aform)
 {
-    os << aform.getName() << ", status: " << (aform.getIsSigned() ? "signed" : "not signed") << ", grade to sign: " << aform.getGradeToSign() << ", grade to execute: " << aform.getGradeToExecute() << ".\n";
-    return (os);
+	os << aform.getName() << ", status: " << (aform.getIsSigned() ? "signed" : "not signed") << ", grade to sign: " << aform.getGradeToSign() << ", grade to execute: " << aform.getGradeToExecute() << ".\n";
+	return (os);
 }

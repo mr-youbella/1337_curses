@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 11:53:30 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 11:51:46 by youbella         ###   ########.fr       */
+/*   Updated: 2025/12/31 16:28:05 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,17 @@
 # include <iostream>
 # include "AForm.hpp"
 
-class PresidentialPardonForm: public AForm
+class PresidentialPardonForm : public AForm
 {
-	
+	private:
+		const std::string target;
+	public:
+		PresidentialPardonForm(void);
+		PresidentialPardonForm(std::string target);
+		PresidentialPardonForm(const PresidentialPardonForm &other);
+		PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
+		void execute(const Bureaucrat &executor) const;
+		~PresidentialPardonForm(void);
 };
 
 #endif
