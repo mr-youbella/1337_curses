@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 12:20:57 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 11:13:32 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/03 18:31:17 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Form::Form(const std::string name, const int grade_to_sign, const int grade_to_e
 {
 	if (grade_to_sign < 1 || grade_to_execute < 1)
 		throw Form::GradeTooHighException();
-    if (grade_to_sign > 150 || grade_to_execute > 150)
+	if (grade_to_sign > 150 || grade_to_execute > 150)
 		throw Form::GradeTooLowException();
 	std::cout << "Name Form constructor called\n";
 }
@@ -85,6 +85,6 @@ Form::~Form(void)
 
 std::ostream &operator<<(std::ostream &os, const Form &form)
 {
-    os << form.getName() << ", status: " << (form.getIsSigned() ? "signed" : "not signed") << ", grade to sign: " << form.getGradeToSign() << ", grade to execute: " << form.getGradeToExecute() << ".\n";
-    return (os);
+	os << form.getName() << ", status: " << (form.getIsSigned() ? "signed" : "not signed") << ", grade to sign: " << form.getGradeToSign() << ", grade to execute: " << form.getGradeToExecute() << ".\n";
+	return (os);
 }

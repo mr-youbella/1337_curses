@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 12:20:57 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/03 18:40:28 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/03 18:40:33 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ void		Bureaucrat::executeForm(const AForm &form)
 		form.execute(*this);
 		std::cout << name << " executed " << form.getName() << '\n';
 	}
-	catch (std::exception &e)
-	{
+	catch (std::exception &e) {
 		std::cout << name << " couldn't execute " << form.getName() << " because " << e.what() << '\n';
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 12:20:57 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 10:49:19 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/03 18:32:00 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,15 @@ Bureaucrat::Bureaucrat(std::string name, int grade): name(name)
 {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
-    if (grade > 150)
+	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
-    this->grade = grade;
 	std::cout << "Name constructor called\n";
+	this->grade = grade;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other): name(other.name)
+Bureaucrat::Bureaucrat(const Bureaucrat &other): name(other.name), grade(other.grade)
 {
 	std::cout << "Copy constructor called\n";
-	*this = other;
 }
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other)
@@ -84,6 +83,6 @@ Bureaucrat::~Bureaucrat(void)
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 {
-    os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".\n";
-    return (os);
+	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".\n";
+	return (os);
 }
