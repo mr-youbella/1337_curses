@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:58:27 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 11:00:09 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/01 17:50:48 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << "Main Exception: " << e.what() << '\n';
+		std::cout << "Main Exception: " << e.what() << '\n';
 	}
 	return 0;
 }

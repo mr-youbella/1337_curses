@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:58:27 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 16:40:30 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/01 18:01:57 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,29 @@
 int main(void)
 {
 	std::srand(std::time(NULL));
+	try
+	{
+		Bureaucrat				boss("Boss", 1);
+        Bureaucrat				intern("Intern", 150);
+	
+		ShrubberyCreationForm	shrub("Home");
+		RobotomyRequestForm		robot("Bender");
+		PresidentialPardonForm	pardon("Criminal");
+
+		boss.signForm(shrub);
+		boss.executeForm(shrub);
+
+		boss.signForm(robot);
+		boss.executeForm(robot);
+
+		intern.executeForm(pardon);
+
+		PresidentialPardonForm	newPardon("Target");
+		boss.executeForm(newPardon);
+	}
+	catch (std::exception &e)
+	{
+	    std::cout << "Unexpected Error: " << e.what() << std::endl;
+    }
 	return (0);
 }

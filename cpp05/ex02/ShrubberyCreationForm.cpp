@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:45:28 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 16:31:37 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/01 18:05:49 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 		std::cout << "Shrubbery created in " << target << "_shrubbery" << '\n';
 	}
 	else
-		std::cerr << "Error: Could not create file." << '\n';
+		std::cout << "Error: Could not create file." << '\n';
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void)

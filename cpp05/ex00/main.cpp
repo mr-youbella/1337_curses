@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:59:56 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/30 15:06:29 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/01 17:50:43 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(void)
 	}
 	catch (std::exception &e) 
 	{
-	    std::cerr << "Unexpected Exception: " << e.what() << std::endl;
+	    std::cout << "Unexpected Exception: " << e.what() << std::endl;
 	}
 	//----------------------------------------------------------------------------------------
     std::cout << "\n--- Test 2: Grade Too High (Constructor) ---" << std::endl;
@@ -36,7 +36,7 @@ int	main(void)
 	}
 	catch (std::exception &e) 
 	{
-		std::cerr << "Caught Exception: " << e.what() << std::endl;
+		std::cout << "Caught Exception: " << e.what() << std::endl;
 	}
 	//----------------------------------------------------------------------------------------
 	std::cout << "\n--- Test 3: Grade Too Low (Constructor) ---" << std::endl;
@@ -46,7 +46,7 @@ int	main(void)
 	}
 	catch (std::exception &e) 
 	{
-		std::cerr << "Caught Exception: " << e.what() << std::endl;
+		std::cout << "Caught Exception: " << e.what() << std::endl;
 	}
 	//----------------------------------------------------------------------------------------
 	std::cout << "\n--- Test 4: Grade Too High (Increment) ---" << std::endl;
@@ -58,7 +58,7 @@ int	main(void)
 	}
 	catch (std::exception &e) 
 	{
-		std::cerr << "Caught Exception: " << e.what() << std::endl;
+		std::cout << "Caught Exception: " << e.what() << std::endl;
 	}
 	//----------------------------------------------------------------------------------------
 	std::cout << "\n--- Test 5: Grade Too Low (Decrement) ---" << std::endl;
@@ -70,7 +70,7 @@ int	main(void)
 	}
 	catch (std::exception &e) 
 	{
-		std::cerr << "Caught Exception: " << e.what() << std::endl;
+		std::cout << "Caught Exception: " << e.what() << std::endl;
 	}
     return (0);
 }

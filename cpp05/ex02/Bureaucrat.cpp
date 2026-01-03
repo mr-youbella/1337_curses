@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 12:20:57 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 11:50:17 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/01 17:57:02 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,27 @@ const char	*Bureaucrat::GradeTooLowException::what() const throw()
 
 void		Bureaucrat::executeForm(const AForm &form)
 {
-    try
+	try
 	{
-        form.execute(*this);
-        std::cout << name << " executed " << form.getName() << std::endl;
-    }
+		form.execute(*this);
+		std::cout << name << " executed " << form.getName() << std::endl;
+	}
 	catch (std::exception &e) {
-        std::cout << name << " couldn't execute " << form.getName() 
-                  << " because " << e.what() << std::endl;
-    }
+		std::cout << name << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void		Bureaucrat::signForm(AForm &form)
+{
+	try
+	{
+		form.beSigned(*this); 
+		std::cout << name << " signed " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
 }
 
 Bureaucrat::~Bureaucrat(void)

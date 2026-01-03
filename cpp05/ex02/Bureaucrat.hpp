@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 11:53:30 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 11:50:06 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/01 17:57:22 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ class Bureaucrat
 				virtual const char *what() const throw();
 		};
 		void		executeForm(const AForm &form);
+		void		signForm(AForm &form);
 		~Bureaucrat(void);
 };
 
