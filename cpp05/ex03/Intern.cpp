@@ -47,8 +47,13 @@ AForm	*Intern::makeForm(std::string form_name, std::string target)
 			}
 		}
 	}
-	std::cout << "Error: Intern cannot create " << form_name << " (Unknown Form)" << '\n';
+	throw Intern::InternCreate();
 	return (NULL);
+}
+
+const char	*Intern::InternCreate::what() const throw()
+{
+	return ("Error: Intern cannot create!");
 }
 
 Intern::~Intern(void)

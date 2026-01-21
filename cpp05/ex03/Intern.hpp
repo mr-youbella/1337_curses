@@ -14,6 +14,7 @@
 # define Intern_HPP
 
 # include <iostream>
+# include <exception>
 # include "AForm.hpp"
 # include "ShrubberyCreationForm.hpp"
 # include "RobotomyRequestForm.hpp"
@@ -26,6 +27,11 @@ class Intern
 		Intern(const Intern &other);
 		Intern 	&operator=(const Intern &other);
 		AForm	*makeForm(std::string form_name, std::string target);
+		class InternCreate: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
 		~Intern(void);
 };
 

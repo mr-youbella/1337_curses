@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 11:53:30 by youbella          #+#    #+#             */
-/*   Updated: 2025/12/31 16:14:54 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:48:25 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class ShrubberyCreationForm: public AForm
 		ShrubberyCreationForm(void);
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &other);
-		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
-		void execute(const Bureaucrat &executor) const;
+		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &other);
+		void					execute(const Bureaucrat &executor) const;
 		~ShrubberyCreationForm(void);
 };
 

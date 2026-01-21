@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 10:58:27 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/03 18:43:52 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/20 22:15:41 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-#include <ctime>
 
 int main(void)
 {
-	std::srand(std::time(NULL));
 	try
 	{
 		Bureaucrat				boss("Boss", 1);
@@ -32,7 +30,17 @@ int main(void)
 		boss.executeForm(shrub);
 
 		boss.signForm(robot);
-		boss.executeForm(robot);
+		for (int i = 1; i <= 6; i++)
+		{
+			try
+			{
+				robot.execute(boss);
+			}
+			catch (std::exception &e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+		}
 
 		intern.executeForm(pardon);
 

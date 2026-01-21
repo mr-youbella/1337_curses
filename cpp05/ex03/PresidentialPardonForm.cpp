@@ -30,10 +30,9 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &oth
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &other)
 {
 	std::cout << "Copy Presidential Pardon assignment operator called\n";
-	(void)other;
+	AForm::operator=(other);
 	return (*this);
 }
-
 
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {

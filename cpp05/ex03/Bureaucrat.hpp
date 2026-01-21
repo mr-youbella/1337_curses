@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 11:53:30 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/01 17:57:22 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/04 16:27:20 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ class Bureaucrat
 		~Bureaucrat(void);
 };
 
-std::ostream	&operator<<(std::ostream &os, Bureaucrat const &bureaucrat);
+std::ostream	&operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
 #endif

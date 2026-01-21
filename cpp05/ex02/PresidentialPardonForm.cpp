@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:45:02 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/03 18:40:33 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/20 21:56:58 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &oth
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &other)
 {
 	std::cout << "Copy Presidential Pardon assignment operator called\n";
-	(void)other;
+	AForm::operator=(other);
 	return (*this);
 }
-
 
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {

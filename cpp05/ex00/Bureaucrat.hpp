@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 11:53:30 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/03 17:53:29 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:49:48 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ class Bureaucrat
 		~Bureaucrat(void);
 };
 
-std::ostream	&operator<<(std::ostream &os, Bureaucrat const &bureaucrat);
+std::ostream	&operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
 #endif

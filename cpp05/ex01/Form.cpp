@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 12:20:57 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/03 18:31:17 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/21 10:13:29 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void				Form::beSigned(Bureaucrat &bureaucrat)
 		is_signed = true;
 	else
 		throw Form::GradeTooLowException();
-	
 }
 
 const char *Form::GradeTooHighException::what() const throw()
