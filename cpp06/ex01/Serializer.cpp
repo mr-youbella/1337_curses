@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 09:12:03 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/29 18:54:49 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/30 09:20:34 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Serializer::Serializer(const Serializer &other)
 Serializer	&Serializer::operator=(const Serializer &other)
 {
 	std::cout << "Copy assignment operator called\n";
+	return (*this);
 }
 
 uintptr_t	Serializer::serialize(Data *ptr)

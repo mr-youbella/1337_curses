@@ -6,12 +6,12 @@
 #    By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/27 11:51:28 by youbella          #+#    #+#              #
-#    Updated: 2026/01/29 10:03:56 by youbella         ###   ########.fr        #
+#    Updated: 2026/01/30 12:02:16 by youbella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g
 
 SRC = main.cpp ScalarConverter.cpp
 OBJ_SRC = $(SRC:.cpp=.o)
