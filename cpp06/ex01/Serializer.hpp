@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 08:51:33 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/29 18:52:55 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/30 15:24:06 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SERIALIZER_HPP
 
 # include <iostream>
+# include <stdint.h>
 # include "Data.hpp"
 
 class Serializer

@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 09:12:03 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/30 09:20:34 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/30 15:24:28 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ Serializer::Serializer()
 
 Serializer::Serializer(const Serializer &other)
 {
+	(void)other;
 	std::cout << "Copy constructor called\n";
 }
 
 Serializer	&Serializer::operator=(const Serializer &other)
 {
+	(void)other;
 	std::cout << "Copy assignment operator called\n";
 	return (*this);
 }
