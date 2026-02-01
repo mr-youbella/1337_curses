@@ -6,7 +6,7 @@
 /*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 08:51:33 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/29 18:49:34 by youbella         ###   ########.fr       */
+/*   Updated: 2026/01/31 14:11:20 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class ScalarConverter
 		ScalarConverter	&operator=(const ScalarConverter &other);
 		~ScalarConverter();
 	public:
-		static void		convert(std::string const & literal);
+		static void		convert(const std::string &literal);
 };
 
 #endif
