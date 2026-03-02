@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 08:55:31 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/29 18:47:50 by youbella         ###   ########.fr       */
+/*   Updated: 2026/03/02 15:29:41 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-    Base* p = generate();
+    Base *p = generate();
 
     std::cout << "identify(ptr): ";
     identify(p);
@@ -23,5 +23,5 @@ int main()
     identify(*p);
 
     delete p;
-    return 0;
+    return (0);
 }

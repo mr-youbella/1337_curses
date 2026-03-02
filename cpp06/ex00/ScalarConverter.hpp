@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 08:51:33 by youbella          #+#    #+#             */
-/*   Updated: 2026/01/31 14:11:20 by youbella         ###   ########.fr       */
+/*   Updated: 2026/03/02 15:06:06 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <iostream>
 # include <cstdlib>
 # include <cerrno>
-# include <climits> 
+# include <climits>
+# include <iomanip>
 
 class ScalarConverter
 {
