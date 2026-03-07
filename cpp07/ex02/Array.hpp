@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array.hpp                                          :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 09:27:44 by youbella          #+#    #+#             */
-/*   Updated: 2026/02/02 09:32:12 by youbella         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:21:40 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
-#define ARRAY_HPP
+# define ARRAY_HPP
 
-#include <exception>
+# include <exception>
+# include <iostream>
 
 template <typename T>
-
 	class Array
 	{
 		private:
@@ -28,18 +28,15 @@ template <typename T>
 			{
 				std::cout << "Default constructor\n";
 			}
-
 			Array(unsigned int n) : _data(new T[n]()), _size(n)
 			{
 				std::cout << "Default constructor by params\n";
 			}
-	
 			Array(const Array &other) : _data(NULL), _size(0)
 			{
 				std::cout << "Copy constructor\n";
 				*this = other;
 			}
-	
 			Array			&operator=(const Array &other)
 			{
 				std::cout << "Copy assignment constructor\n";
@@ -53,35 +50,30 @@ template <typename T>
 				}
 				return (*this);
 			}
-
 			unsigned int	size() const
 			{
-				return _size;
+				return (_size);
 			}
-
 			class OutOfBounds : public std::exception
 			{
 				public:
 					virtual const char *what() const throw()
 					{
-						return "Out of bounds";
+						return ("Out of bounds");
 					}
 			};
-
 			T				&operator[](int index)
 			{
 				if (index < 0 || index >= (int)_size)
 					throw OutOfBounds();
-				return _data[index];
+				return (_data[index]);
 			}
-
 			const T			&operator[](int index) const
 			{
 				if (index < 0 || index >= (int)_size)
 					throw OutOfBounds();
-				return _data[index];
+				return (_data[index]);
 			}
-
 			~Array()
 			{
 				std::cout << "destructor\n";
