@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/08 00:26:40 by youbella          #+#    #+#             */
+/*   Updated: 2026/03/08 02:12:32 by youbella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Span.hpp"
 #include <limits>
 
@@ -43,6 +55,15 @@ long	Span::shortestSpan()
 	return (min_diff);
 }
 
+long Span::longestSpan()
+{
+	if (_storage.size() < 2)
+		throw NoSpanException();
+	int min_val = *std::min_element(_storage.begin(), _storage.end());
+	int max_val = *std::max_element(_storage.begin(), _storage.end());
+	return (static_cast<long>(max_val) - min_val);
+}
+
 const char	*Span::FullException::what() const throw()
 {
 	return ("Span is already full");
@@ -51,15 +72,6 @@ const char	*Span::FullException::what() const throw()
 const char	*Span::NoSpanException::what() const throw()
 {
 	return ("Not enough numbers to find a span");
-}
-
-long Span::longestSpan()
-{
-	if (_storage.size() < 2)
-		throw NoSpanException();
-	int min_val = *std::min_element(_storage.begin(), _storage.end());
-	int max_val = *std::max_element(_storage.begin(), _storage.end());
-	return (static_cast<long>(max_val) - min_val);
 }
 
 Span::~Span() {}

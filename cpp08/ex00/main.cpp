@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 21:47:00 by youbella          #+#    #+#             */
-/*   Updated: 2026/03/04 21:48:05 by youbella         ###   ########.fr       */
+/*   Updated: 2026/03/08 00:58:28 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int main()
 	{
 		std::cerr << e.what() << '\n';
 	}
+
 	std::cout << "-------------------\n";
+
 	std::list<int> l;
 	l.push_back(1);
 	l.push_back(2);

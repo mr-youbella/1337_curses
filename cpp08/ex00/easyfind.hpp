@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <younesoubllal@gmail.com>         +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 21:45:15 by youbella          #+#    #+#             */
-/*   Updated: 2026/03/04 21:49:28 by youbella         ###   ########.fr       */
+/*   Updated: 2026/03/08 00:33:05 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_HPP
-#define EASYFIND_HPP
+# define EASYFIND_HPP
 
-#include <algorithm>
-#include <exception>
-#include <iostream>
+# include <algorithm>
+# include <exception>
+# include <iostream>
 
 class NotFoundException : public std::exception
 {

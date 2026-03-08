@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/08 00:26:42 by youbella          #+#    #+#             */
+/*   Updated: 2026/03/08 02:12:04 by youbella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Span.hpp"
 #include <iostream>
 #include <vector>
@@ -6,7 +18,7 @@
 int main()
 {
 	std::cout << "--- Subject Test ---\n";
-	Span sp = Span(5);
+	Span sp(5);
 	sp.addNumber(6);
 	sp.addNumber(3);
 	sp.addNumber(17);
