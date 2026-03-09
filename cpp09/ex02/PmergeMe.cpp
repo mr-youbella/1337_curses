@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 14:47:28 by youbella          #+#    #+#             */
-/*   Updated: 2026/03/09 19:50:28 by youbella         ###   ########.fr       */
+/*   Updated: 2026/03/09 21:23:00 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void PmergeMe::sortDeque()
 			std::swap(a, b);
 		pairs.push_back(std::make_pair(a, b));
 	}
-	bool has_straggler = (_deq.size() % 2 != 0);
+	bool has_straggler = _deq.size() % 2 != 0;
 	int straggler = has_straggler ? _deq.back() : -1;
 	for (size_t i = 0; i < pairs.size(); i++)
 	{	
