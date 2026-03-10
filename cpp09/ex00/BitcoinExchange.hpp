@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 01:56:32 by youbella          #+#    #+#             */
-/*   Updated: 2026/03/09 02:11:54 by youbella         ###   ########.fr       */
+/*   Updated: 2026/03/09 23:52:05 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <iostream>
 # include <fstream>
 # include <sstream>
+# include <cstdlib>
 
 class BitcoinExchange
 {

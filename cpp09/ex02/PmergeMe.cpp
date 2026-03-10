@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 14:47:28 by youbella          #+#    #+#             */
-/*   Updated: 2026/03/09 21:23:00 by youbella         ###   ########.fr       */
+/*   Updated: 2026/03/09 23:59:42 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,23 @@ void PmergeMe::sortVector()
 		main_chain.push_back(pairs[i].second);
 		pend.push_back(pairs[i].first);
 	}
+	std::vector<bool> inserted(pend.size(), false);
 	insertVector(main_chain, pend[0]);
+	inserted[0] = true;
 	std::vector<int> order = jacobsthal(pend.size());
 	for (size_t i = 0; i < order.size(); i++)
 	{
 		int idx = order[i] - 1;
-		if (idx > 0 && idx < (int)pend.size())
+		if (idx >= 0 && idx < (int)pend.size() && !inserted[idx])
+		{
 			insertVector(main_chain, pend[idx]);
+			inserted[idx] = true;
+		}
+	}
+	for (size_t i = 1; i < pend.size(); i++)
+	{
+		if (!inserted[i])
+			insertVector(main_chain, pend[i]);
 	}
 	if (has_straggler)
 		insertVector(main_chain, straggler);
@@ -131,13 +141,23 @@ void PmergeMe::sortDeque()
 		main_chain.push_back(pairs[i].second);
 		pend.push_back(pairs[i].first);
 	}
+	std::deque<bool> inserted(pend.size(), false);
 	insertDeque(main_chain, pend[0]);
+	inserted[0] = true;
 	std::vector<int> order = jacobsthal(pend.size());
 	for (size_t i = 0; i < order.size(); i++)
 	{
 		int idx = order[i] - 1;
-		if (idx > 0 && idx < (int)pend.size())
+		if (idx >= 0 && idx < (int)pend.size() && !inserted[idx])
+		{
 			insertDeque(main_chain, pend[idx]);
+			inserted[idx] = true;
+		}
+	}
+	for (size_t i = 1; i < pend.size(); i++)
+	{
+		if (!inserted[i])
+			insertDeque(main_chain, pend[i]);
 	}
 	if (has_straggler)
 		insertDeque(main_chain, straggler);
