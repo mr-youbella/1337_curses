@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 14:47:28 by youbella          #+#    #+#             */
-/*   Updated: 2026/03/09 23:59:42 by youbella         ###   ########.fr       */
+/*   Updated: 2026/03/11 02:03:28 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,11 @@ void PmergeMe::parseInput(int argc, char **argv)
 			}
 			_vec.push_back((int)num);
 			_deq.push_back((int)num);
+		}
+		if (_vec.empty())
+		{
+			std::cerr << "Error\n";
+			exit(1);
 		}
 	}
 }

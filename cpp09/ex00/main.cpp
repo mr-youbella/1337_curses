@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 02:21:06 by youbella          #+#    #+#             */
-/*   Updated: 2026/03/09 02:27:03 by youbella         ###   ########.fr       */
+/*   Updated: 2026/03/10 18:11:14 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cout << "Error: could not open file.\n";
+		std::cerr << "Error: ARGS != 2.\n";
 		return (1);
 	}
 	BitcoinExchange btc;

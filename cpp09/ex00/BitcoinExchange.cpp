@@ -6,7 +6,7 @@
 /*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 01:53:59 by youbella          #+#    #+#             */
-/*   Updated: 2026/03/09 02:22:48 by youbella         ###   ########.fr       */
+/*   Updated: 2026/03/11 00:54:33 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void BitcoinExchange::loadDatabase(const std::string &filename)
 	std::ifstream file(filename.c_str());
 	if (!file.is_open())
 	{
-		std::cout << "Error: could not open file.\n";
+		std::cerr << "Error: could not open file.\n";
 		return ;
 	}
 	std::string line;
@@ -75,7 +75,7 @@ void BitcoinExchange::processInput(const std::string& filename)
 	std::ifstream	file(filename.c_str());
 	if (!file.is_open())
 	{
-		std::cout << "Error: could not open file.\n";
+		std::cerr << "Error: could not open file.\n";
 		return ;
 	}
 	std::string	line;
@@ -85,31 +85,31 @@ void BitcoinExchange::processInput(const std::string& filename)
 		size_t sep = line.find(" | ");
 		if (sep == std::string::npos)
 		{
-			std::cout << "Error: bad input => " << line << '\n';
+			std::cerr << "Error: bad input => " << line << '\n';
 			continue ;
 		}
 		std::string date  = line.substr(0, sep);
 		std::string value = line.substr(sep + 3);
 		if (!isValidDate(date))
 		{
-			std::cout << "Error: bad input => " << line << '\n';
+			std::cerr << "Error: bad input => " << line << '\n';
 			continue ;
 		}
 		char	*end;
 		double	amount = std::strtod(value.c_str(), &end);
-		if (*end != '\0')
+		if (*end != '\0' || value.empty())
 		{
-			std::cout << "Error: bad input => " << line << '\n';
+			std::cerr << "Error: bad input => " << line << '\n';
 			continue ;
 		}
 		if (amount < 0)
 		{
-			std::cout << "Error: not a positive number.\n";
+			std::cerr << "Error: not a positive number.\n";
 			continue ;
 		}
 		if (amount > 1000)
 		{
-			std::cout << "Error: too large a number.\n";
+			std::cerr << "Error: too large a number.\n";
 			continue ;
 		}
 		std::map<std::string, double>::iterator it = _database.lower_bound(date);
@@ -117,7 +117,7 @@ void BitcoinExchange::processInput(const std::string& filename)
 		{
 			if (it == _database.begin())
 			{
-				std::cout << "Error: bad input => " << date << '\n';
+				std::cerr << "Error: bad input => " << date << '\n';
 				continue ;
 			}
 			--it;
