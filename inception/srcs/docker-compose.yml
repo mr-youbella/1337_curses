@@ -1,0 +1,48 @@
+services:
+  nginx:
+    build: ./requirements/nginx
+    container_name: nginx
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    volumes:
+      - wordpress_data:/var/www/html
+
+  wordpress:
+    build: ./requirements/wordpress
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    volumes:
+      - wordpress_data:/var/www/html
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: youbella
+      MYSQL_PASSWORD: youbellaPASS
+      MYSQL_HOST: mariadb
+
+  mariadb:
+    build: ./requirements/mariadb
+    container_name: mariadb
+    networks:
+      - inception
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: youbella
+      MYSQL_PASSWORD: youbellaPASS
+      MYSQL_ROOT_PASSWORD: youbellaPASS
+
+networks:
+  inception:
+    driver: bridge
+
+volumes:
+  wordpress_data:
+  db_data:
