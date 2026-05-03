@@ -4,7 +4,6 @@ set -e
 mkdir -p /run/mysqld
 chown -R mysql:mysql /run/mysqld /var/lib/mysql
 
-# أول تشغيل فقط
 if [ ! -d "/var/lib/mysql/mysql" ]; then
     mysql_install_db --user=mysql --datadir=/var/lib/mysql
 fi
@@ -16,11 +15,8 @@ sleep 5
 
 mysql -u root << EOF
 CREATE DATABASE IF NOT EXISTS wordpress;
-
-CREATE USER IF NOT EXISTS 'youbella'@'%' IDENTIFIED BY 'youbellaPASS';
-
-GRANT ALL PRIVILEGES ON wordpress.* TO 'youbella'@'%';
-
+CREATE USER IF NOT EXISTS '${USER}'@'%' IDENTIFIED BY '${PASSWORD}';
+GRANT ALL PRIVILEGES ON wordpress.* TO '${USER}'@'%';
 FLUSH PRIVILEGES;
 EOF
 

@@ -1,15 +1,20 @@
 services:
-  nginx:
-    build: ./requirements/nginx
-    container_name: nginx
-    ports:
-      - "443:443"
-    depends_on:
-      - wordpress
+  mariadb:
+    build: ./requirements/mariadb
+    container_name: mariadb
     networks:
       - inception
     volumes:
-      - wordpress_data:/var/www/html
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      USER: ${USER}
+      PASSWORD: ${PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      REDIS_HOST: redis
+    restart: always
+    env_file:
+      - .env
 
   wordpress:
     build: ./requirements/wordpress
@@ -21,23 +26,51 @@ services:
     volumes:
       - wordpress_data:/var/www/html
     environment:
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: youbella
-      MYSQL_PASSWORD: youbellaPASS
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      USER: ${USER}
+      PASSWORD: ${PASSWORD}
       MYSQL_HOST: mariadb
+    restart: always
+    env_file:
+      - .env
 
-  mariadb:
-    build: ./requirements/mariadb
-    container_name: mariadb
+  nginx:
+    build: ./requirements/nginx
+    container_name: nginx
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
     networks:
       - inception
     volumes:
-      - db_data:/var/lib/mysql
-    environment:
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: youbella
-      MYSQL_PASSWORD: youbellaPASS
-      MYSQL_ROOT_PASSWORD: youbellaPASS
+      - wordpress_data:/var/www/html
+    restart: always
+    env_file:
+      - .env
+
+  # Bonus
+  redis:
+    build: ./requirements/bonus/redis
+    container_name: redis
+    networks:
+      - inception
+    restart: always
+    env_file:
+      - .env
+  ftp:
+    build: ./requirements/bonus/ftp
+    container_name: ftp
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+    ports:
+      - "21:21"
+      - "10000-10100:10000-10100"
+    restart: always
+    env_file:
+      - .env
 
 networks:
   inception:
@@ -45,4 +78,12 @@ networks:
 
 volumes:
   wordpress_data:
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/youbella/data/wordpress
   db_data:
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/youbella/data/mariadb
