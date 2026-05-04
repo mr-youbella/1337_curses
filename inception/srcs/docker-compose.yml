@@ -71,6 +71,14 @@ services:
     restart: always
     env_file:
       - .env
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - inception
 
 networks:
   inception:
