@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Resume — Alex Morgan</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+		rel="stylesheet" />
+	<style>
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		:root {
+			--ink: #1a1a18;
+			--muted: #6b6b62;
+			--rule: #d9d8d0;
+			--accent: #c0392b;
+			--bg: #f7f6f1;
+			--white: #ffffff;
+		}
+
+		body {
+			font-family: 'DM Sans', sans-serif;
+			background: var(--bg);
+			color: var(--ink);
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			padding: 3rem 1.5rem;
+		}
+
+		.page {
+			background: var(--white);
+			width: 100%;
+			max-width: 780px;
+			padding: 4rem 4.5rem;
+			box-shadow: 0 4px 40px rgba(0, 0, 0, .08);
+		}
+
+		/* ── HEADER ── */
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			padding-bottom: 2rem;
+			border-bottom: 2px solid var(--ink);
+		}
+
+		.name {
+			font-family: 'DM Serif Display', serif;
+			font-size: 3rem;
+			line-height: 1;
+			letter-spacing: -.5px;
+		}
+
+		.name span {
+			display: block;
+			font-family: 'DM Serif Display', serif;
+			font-style: italic;
+			font-size: 1.1rem;
+			color: var(--accent);
+			margin-top: .4rem;
+			letter-spacing: .5px;
+		}
+
+		.contact {
+			text-align: right;
+			font-size: .82rem;
+			font-weight: 300;
+			color: var(--muted);
+			line-height: 1.9;
+		}
+
+		.contact a {
+			color: var(--accent);
+			text-decoration: none;
+		}
+
+		.contact a:hover {
+			text-decoration: underline;
+		}
+
+		section {
+			margin-top: 2.5rem;
+		}
+
+		h2 {
+			font-family: 'DM Serif Display', serif;
+			font-size: 1rem;
+			letter-spacing: 3px;
+			text-transform: uppercase;
+			color: var(--muted);
+			margin-bottom: 1.2rem;
+		}
+
+		.summary p {
+			font-size: .95rem;
+			line-height: 1.75;
+			font-weight: 300;
+			max-width: 60ch;
+		}
+
+		.entry {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			gap: .25rem 1.5rem;
+			padding-bottom: 1.8rem;
+			margin-bottom: 1.8rem;
+			border-bottom: 1px solid var(--rule);
+		}
+
+		.entry:last-child {
+			border-bottom: none;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+
+		.entry-title {
+			font-size: 1rem;
+			font-weight: 500;
+		}
+
+		.entry-company {
+			font-size: .88rem;
+			color: var(--accent);
+			font-weight: 400;
+			margin-top: .15rem;
+		}
+
+		.entry-date {
+			font-size: .8rem;
+			color: var(--muted);
+			font-weight: 300;
+			white-space: nowrap;
+			text-align: right;
+			padding-top: .15rem;
+		}
+
+		.entry-desc {
+			grid-column: 1 / -1;
+			font-size: .875rem;
+			line-height: 1.7;
+			font-weight: 300;
+			color: #3a3a35;
+			margin-top: .6rem;
+		}
+
+		.skills-grid {
+			display: flex;
+			flex-wrap: wrap;
+			gap: .5rem;
+		}
+
+		.tag {
+			font-size: .78rem;
+			font-weight: 500;
+			letter-spacing: .5px;
+			padding: .35rem .85rem;
+			border: 1px solid var(--rule);
+			background: var(--bg);
+			color: var(--ink);
+		}
+
+		.edu-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			margin-bottom: .8rem;
+		}
+
+		.edu-row:last-child {
+			margin-bottom: 0;
+		}
+
+		.edu-degree {
+			font-size: .95rem;
+			font-weight: 500;
+		}
+
+		.edu-school {
+			font-size: .85rem;
+			color: var(--muted);
+			font-weight: 300;
+		}
+
+		.edu-year {
+			font-size: .8rem;
+			color: var(--muted);
+			font-weight: 300;
+		}
+
+		@media (max-width: 600px) {
+			.page {
+				padding: 2.5rem 1.8rem;
+			}
+
+			header {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 1.2rem;
+			}
+
+			.contact {
+				text-align: left;
+			}
+
+			.name {
+				font-size: 2.2rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="page">
+
+		<header>
+			<div>
+				<div class="name">Younes Oubellal<span>Full-Stack Developer</span></div>
+			</div>
+			<div class="contact">
+				younesoubllal@email.com<br>
+				+212 694250007<br>
+				Casablanca, Morocco<br>
+				<a href="#">linkedin.com/in/mryoubella</a><br>
+				<a href="#">github.com/mr-youbella</a>
+			</div>
+		</header>
+
+		<section class="summary">
+			<h2>Profile</h2>
+			<p>Full-stack software developer student at 1337 Coding School (42 the Network) with practical experience in
+				building production-style web applications. Strong foundation in TypeScript, NextJS, Node.js, and
+				PostgreSQL, with proven problem-solving ability and a continuous learning mindset.</p>
+		</section>
+
+		<section>
+			<h2>Experience</h2>
+
+			<div class="entry">
+				<p class="entry-desc">No professional experience yet. Focused on academic and personal full-stack development projects.</p>
+			</div>
+
+		</section>
+
+		<section>
+			<h2>Skills</h2>
+			<div class="skills-grid">
+				<span class="tag">TypeScript</span>
+				<span class="tag">React</span>
+				<span class="tag">Node.js</span>
+				<span class="tag">PostgreSQL</span>
+				<span class="tag">Docker</span>
+				<span class="tag">Redis</span>
+			</div>
+		</section>
+
+		<section>
+			<h2>Education</h2>
+			<div class="edu-row">
+				<div>
+					<div class="edu-degree">1337</div>
+					<div class="edu-school">1337 Coding Shcool</div>
+				</div>
+				<div class="edu-year">2024</div>
+			</div>
+		</section>
+
+	</div>
+</body>
+
+</html>

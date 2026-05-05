@@ -45,6 +45,7 @@ services:
       - inception
     volumes:
       - wordpress_data:/var/www/html
+      - /home/youbella/inception/srcs/requirements/nginx/static:/var/www/static
     restart: always
     env_file:
       - .env
@@ -77,6 +78,16 @@ services:
     restart: always
     ports:
       - "8080:8080"
+    networks:
+      - inception
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - inception
 
