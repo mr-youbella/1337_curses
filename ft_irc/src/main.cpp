@@ -1,6 +1,7 @@
 #include "../inc/server.hpp"
 #include <iostream>
 #include <cstdlib>
+#include <climits>
 
 int main(int argc, char **argv)
 {
@@ -10,8 +11,10 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	const int port = std::atoi(argv[1]);
-	if (port <= 0 || port > 65535)
+	const char		*begin = argv[1];
+	char			*end = NULL;
+	long			port = std::strtol(begin, &end, 10);
+	if (end == begin || *end != '\0' || port <= 0 || port > 65535)
 	{
 		std::cerr << "invalid port\n";
 		return (1);
@@ -19,7 +22,7 @@ int main(int argc, char **argv)
 
 	const std::string password = argv[2];
 
-	Server server(port, password);
+	Server server(static_cast<int>(port), password);
 	server.run();
 
 	return (0);

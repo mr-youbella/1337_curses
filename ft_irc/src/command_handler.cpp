@@ -85,7 +85,7 @@ void CommandHandler::handleNick(Client &client, const std::string &param)
 		client.appendToWriteBuffer(":IRCServer 431 * :No nickname given\r\n");
 		return;
 	}
-	if (_server->Exist_nick(param) && param != client.getNickname())
+	if (_server->is_exist_nick(param) && param != client.getNickname())
 	{
 		client.appendToWriteBuffer(":IRCServer 433 * " + param + " :Nickname is already exist\r\n");
 		return;
@@ -717,9 +717,7 @@ void CommandHandler::execute(Client &client, std::string const &line)
 					(*it)->appendToWriteBuffer(msg);
 			}
 			else
-			{
 				client.appendToWriteBuffer(":IRCServer 472 " + mode + " :Unknown mode\r\n");
-			}
 		}
 	}
 	else

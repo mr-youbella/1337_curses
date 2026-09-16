@@ -45,7 +45,7 @@ class Server
 		Channel							*create_channel(const std::string &name);
 		void							removeEmptyChannel(const std::string &name);
 		std::map<int, Client>			&getClients();
-		bool							Exist_nick(const std::string &nick);
+		bool							is_exist_nick(const std::string &nick);
 };
 
 #endif

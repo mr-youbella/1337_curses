@@ -272,15 +272,15 @@ Channel *Server::getChannel(const std::string &name)
 
 Channel *Server::create_channel(const std::string &name)
 {
-	Channel *name_channel;
-	name_channel = getChannel(name);
-	if (name_channel == NULL)
+	Channel *channel;
+	channel = getChannel(name);
+	if (channel == NULL)
 	{
 		_channel.insert(std::make_pair(name, Channel(name)));
 		return (getChannel(name));
 	}
 	else
-		return name_channel;
+		return channel;
 }
 
 void Server::removeEmptyChannel(const std::string &name)
@@ -295,7 +295,7 @@ std::map<int, Client> &Server::getClients()
 	return _clients;
 }
 
-bool Server::Exist_nick(const std::string &nick)
+bool Server::is_exist_nick(const std::string &nick)
 {
 	for (std::map<int, Client>::iterator it = _clients.begin(); it != _clients.end(); it++)
 	{
