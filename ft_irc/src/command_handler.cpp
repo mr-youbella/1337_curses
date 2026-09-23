@@ -1,9 +1,5 @@
 #include "../inc/command_handler.hpp"
 #include "../inc/server.hpp"
-#include "../inc/channel.hpp"
-#include <cctype>
-#include <iostream>
-#include <sstream>
 
 CommandHandler::CommandHandler(std::string const &password) : _password(password), _server(NULL), _should_disconnect(false), _bot("IRCBot"), _fileTransfer() {}
 

@@ -2,6 +2,13 @@
 #define BOT_HPP
 
 #include <string>
+#include <cctype>
+#include <climits>
+#include <cstdlib>
+#include <ctime>
+#include <sstream>
+#include "client.hpp"
+#include "channel.hpp"
 
 class Client;
 class Channel;

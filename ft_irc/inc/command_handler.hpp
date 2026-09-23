@@ -2,10 +2,14 @@
 #define COMMANDHANDLER_HPP
 
 #include <string>
+#include <cctype>
+#include <iostream>
+#include <sstream>
 #include "client.hpp"
 #include "parse.hpp"
 #include "bot.hpp"
 #include "fileTransfer.hpp"
+#include "channel.hpp"
 
 class Server;
 

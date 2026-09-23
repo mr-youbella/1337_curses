@@ -1,14 +1,12 @@
 #include "../inc/server.hpp"
-#include <iostream>
-#include <cstring>
-#include <cstdlib>
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <cerrno>
-#include <csignal>
+
+std::string Server::normalizeChannelName(const std::string &name)
+{
+	std::string normalized = name;
+	for (size_t i = 0; i < normalized.size(); i++)
+		normalized[i] = static_cast<char>(std::tolower(static_cast<unsigned char>(normalized[i])));
+	return (normalized);
+}
 
 Server::Server(int port, const std::string &password) : _listen_fd(-1), _port(port), _password(password), _command_handler(password)
 {
@@ -172,6 +170,12 @@ void Server::handleClientRead(int fd)
 
 	while (client.hasCompleteLine())
 	{
+		if (client.hasLineTooLong())
+		{
+			client.appendToWriteBuffer("ERROR :IRC message exceeds 512 bytes\r\n");
+			_closing_clients.insert(fd);
+			return;
+		}
 		std::string line = client.extractLine();
 		if (!line.empty())
 		{
@@ -179,6 +183,11 @@ void Server::handleClientRead(int fd)
 			if (_command_handler.shouldDisconnect())
 				break;
 		}
+	}
+	if (client.hasLineTooLong())
+	{
+		client.appendToWriteBuffer("ERROR :IRC message exceeds 512 bytes\r\n");
+		_closing_clients.insert(fd);
 	}
 }
 
@@ -264,7 +273,7 @@ std::map<std::string, Channel> &Server::getChannels()
 
 Channel *Server::getChannel(const std::string &name)
 {
-	std::map<std::string, Channel>::iterator iter = _channel.find(name);
+	std::map<std::string, Channel>::iterator iter = _channel.find(normalizeChannelName(name));
 	if (iter == _channel.end())
 		return NULL;
 	return &(iter->second);
@@ -272,12 +281,12 @@ Channel *Server::getChannel(const std::string &name)
 
 Channel *Server::create_channel(const std::string &name)
 {
-	Channel *channel;
-	channel = getChannel(name);
+	const std::string normalizedName = normalizeChannelName(name);
+	Channel *channel = getChannel(normalizedName);
 	if (channel == NULL)
 	{
-		_channel.insert(std::make_pair(name, Channel(name)));
-		return (getChannel(name));
+		_channel.insert(std::make_pair(normalizedName, Channel(normalizedName)));
+		return (getChannel(normalizedName));
 	}
 	else
 		return channel;
@@ -285,7 +294,7 @@ Channel *Server::create_channel(const std::string &name)
 
 void Server::removeEmptyChannel(const std::string &name)
 {
-	std::map<std::string, Channel>::iterator it = _channel.find(name);
+	std::map<std::string, Channel>::iterator it = _channel.find(normalizeChannelName(name));
 	if (it != _channel.end() && it->second.isEmpty())
 		_channel.erase(it);
 }

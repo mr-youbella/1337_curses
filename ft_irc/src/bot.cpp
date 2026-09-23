@@ -1,11 +1,4 @@
 #include "../inc/bot.hpp"
-#include "../inc/client.hpp"
-#include "../inc/channel.hpp"
-#include <cctype>
-#include <climits>
-#include <cstdlib>
-#include <ctime>
-#include <sstream>
 
 Bot::Bot(const std::string &nickname) : _nickname(nickname), _username("bot")
 {

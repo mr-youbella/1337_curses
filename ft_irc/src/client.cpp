@@ -1,5 +1,4 @@
 #include "../inc/client.hpp"
-#include <iostream>
 
 Client::Client() : _fd(-1), _registered(false), _pass(false), _hasNickname(false), _hasUsername(false) {}
 
@@ -88,6 +87,14 @@ bool Client::appendToReadBuffer(const char *data, int len)
 bool Client::hasCompleteLine() const
 {
 	return (_read_buffer.find("\n") != std::string::npos);
+}
+
+bool Client::hasLineTooLong() const
+{
+	const size_t newline = _read_buffer.find('\n');
+	if (newline == std::string::npos)
+		return (_read_buffer.size() > MAX_IRC_LINE_SIZE);
+	return (newline + 1 > MAX_IRC_LINE_SIZE);
 }
 
 std::string Client::extractLine()

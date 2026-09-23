@@ -6,6 +6,17 @@
 #include <map>
 #include <set>
 #include <poll.h>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <cerrno>
+#include <csignal>
+#include <cctype>
 #include "client.hpp"
 #include "channel.hpp"
 #include "command_handler.hpp"
@@ -34,6 +45,7 @@ class Server
 		void dispatchLine(Client &client, const std::string &line);
 		void setNonBlocking(int fd);
 		void flagWriteClients();
+		static std::string normalizeChannelName(const std::string &name);
 
 	public:
 		Server(int port, const std::string &password);

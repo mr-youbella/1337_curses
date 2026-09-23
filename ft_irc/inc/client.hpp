@@ -2,6 +2,7 @@
 #define CLIENT_HPP
 
 #include <string>
+#include <iostream>
 
 class Client
 {
@@ -16,6 +17,7 @@ class Client
 		bool					_hasNickname;
 		bool					_hasUsername;
 		static const size_t		MAX_BUFFER_SIZE = 8192;
+		static const size_t		MAX_IRC_LINE_SIZE = 512;
 	
 	public:
 		Client();
@@ -37,6 +39,7 @@ class Client
 		bool						get_hasUsername();
 		bool						appendToReadBuffer(char const *data, int len);
 		bool						hasCompleteLine() const;
+		bool						hasLineTooLong() const;
 		std::string					extractLine();
 		void						appendToWriteBuffer(std::string const &data);
 		const std::string			&getWriteBuffer() const;

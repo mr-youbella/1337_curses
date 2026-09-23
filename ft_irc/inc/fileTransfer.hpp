@@ -2,6 +2,8 @@
 #define FILE_TRANSFER_HPP
 
 #include <string>
+#include <sstream>
+#include "client.hpp"
 
 class Client;
 

@@ -38,7 +38,7 @@ bool parse::JOIN_MULTI(const std::string &param, std::vector<std::string> &chann
 	{
 		size_t comma = channelList.find(',', start);
 		std::string channel = channelList.substr(start, comma - start);
-		if (channel.empty() || (channel[0] != '#' && channel[0] != '&'))
+		if (channel.empty() || channel.size() > 50 || (channel[0] != '#' && channel[0] != '&'))
 			return false;
 		for (size_t i = 0; i < channel.size(); i++)
 		{

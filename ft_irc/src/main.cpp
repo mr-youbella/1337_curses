@@ -1,7 +1,4 @@
 #include "../inc/server.hpp"
-#include <iostream>
-#include <cstdlib>
-#include <climits>
 
 int main(int argc, char **argv)
 {

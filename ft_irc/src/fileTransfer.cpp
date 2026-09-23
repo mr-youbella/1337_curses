@@ -1,6 +1,4 @@
 #include "../inc/fileTransfer.hpp"
-#include "../inc/client.hpp"
-#include <sstream>
 
 static const char CTCP_DELIM = '\x01';
 
