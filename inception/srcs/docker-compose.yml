@@ -1,5 +1,6 @@
 services:
   mariadb:
+    image: mariadb:inception
     build: ./requirements/mariadb
     container_name: mariadb
     networks:
@@ -11,16 +12,17 @@ services:
       USER: ${USER}
       PASSWORD: ${PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      REDIS_HOST: redis
     restart: always
     env_file:
       - .env
 
   wordpress:
+    image: wordpress:inception
     build: ./requirements/wordpress
     container_name: wordpress
     depends_on:
       - mariadb
+      - redis
     networks:
       - inception
     volumes:
@@ -30,11 +32,13 @@ services:
       USER: ${USER}
       PASSWORD: ${PASSWORD}
       MYSQL_HOST: mariadb
+      REDIS_HOST: redis
     restart: always
     env_file:
       - .env
 
   nginx:
+    image: nginx:inception
     build: ./requirements/nginx
     container_name: nginx
     ports:
@@ -45,13 +49,14 @@ services:
       - inception
     volumes:
       - wordpress_data:/var/www/html
-      - /home/youbella/inception/srcs/requirements/nginx/static:/var/www/static
+      - ./requirements/nginx/static:/var/www/static:ro
     restart: always
     env_file:
       - .env
 
   # Bonus
   redis:
+    image: redis:inception
     build: ./requirements/bonus/redis
     container_name: redis
     networks:
@@ -60,37 +65,21 @@ services:
     env_file:
       - .env
   ftp:
+    image: ftp:inception
     build: ./requirements/bonus/ftp
     container_name: ftp
     depends_on:
       - wordpress
     volumes:
       - wordpress_data:/var/www/html
+    networks:
+      - inception
     ports:
       - "21:21"
       - "10000-10100:10000-10100"
     restart: always
     env_file:
       - .env
-  adminer:
-    image: adminer:latest
-    container_name: adminer
-    restart: always
-    ports:
-      - "8080:8080"
-    networks:
-      - inception
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: portainer
-    restart: always
-    ports:
-      - "9000:9000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - inception
-
 networks:
   inception:
     driver: bridge
@@ -100,9 +89,9 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/youbella/data/wordpress
+      device: /home/${USER}/data/wordpress
   db_data:
     driver_opts:
       type: none
       o: bind
-      device: /home/youbella/data/mariadb
+      device: /home/${USER}/data/mariadb

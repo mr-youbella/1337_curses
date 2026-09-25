@@ -7,7 +7,7 @@ if [ ! -f "wp-config.php" ]; then
 
 	echo "Downloading WordPress..."
 
-	wget https://wordpress.org/latest.tar.gz -O /tmp/wp.tar.gz
+	wget "https://wordpress.org/wordpress-${WORDPRESS_VERSION:-7.1.2}.tar.gz" -O /tmp/wp.tar.gz
 	tar -xzf /tmp/wp.tar.gz -C /tmp
 
 	cp -r /tmp/wordpress/* /var/www/html
@@ -29,9 +29,8 @@ chown -R www-data:www-data /var/www/html
 
 # Bonus Redis
 if ! command -v wp >/dev/null 2>&1; then
-	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-	chmod +x wp-cli.phar
-	mv wp-cli.phar /usr/local/bin/wp
+	curl -fsSL "https://github.com/wp-cli/wp-cli/releases/download/v${WP_CLI_VERSION:-2.12.0}/wp-cli-${WP_CLI_VERSION:-2.12.0}.phar" -o /usr/local/bin/wp
+	chmod +x /usr/local/bin/wp
 fi
 
 until mysql -h mariadb -u${USER} -p${PASSWORD} -e "SELECT 1;" >/dev/null 2>&1; do
@@ -47,6 +46,13 @@ if ! wp core is-installed --allow-root; then
 		--admin_password="${PASSWORD}" \
 		--admin_email="younesoubllal@gmail.com" \
 		--skip-email \
+		--allow-root
+fi
+
+if ! wp user get "${WP_USER:-editor}" --field=ID --allow-root >/dev/null 2>&1; then
+	wp user create "${WP_USER:-editor}" "${WP_USER_EMAIL:-editor@example.invalid}" \
+		--user_pass="${WP_USER_PASSWORD:-$PASSWORD}" \
+		--role=editor \
 		--allow-root
 fi
 
