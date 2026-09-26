@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youbella <youbella@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youbella <youbella@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 17:44:20 by youbella          #+#    #+#             */
-/*   Updated: 2025/10/09 19:41:02 by youbella         ###   ########.fr       */
+/*   Updated: 2026/09/26 16:32:37 by youbella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	ft_atoi(const char *str)
 {
 	size_t	i;
 	size_t	result;
-	size_t	b_result;
 	short	sign;
 
 	i = 0;
@@ -32,7 +31,6 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		b_result = result;
 		result = result * 10 + str[i++] - 48;
 		if (result > 2147483647)
 			return (-1);
