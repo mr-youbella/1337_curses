@@ -48,19 +48,25 @@ if [ "$database_ready" != true ]; then
 	exit 1
 fi
 
+wp_admin_email="${WP_ADMIN_EMAIL:-admin@${DOMAIN_NAME}}"
+
 if ! wp core is-installed --allow-root; then
 	wp core install \
 		--url="https://${DOMAIN_NAME}" \
 		--title="Inception" \
 		--admin_user="${USER}" \
 		--admin_password="${PASSWORD}" \
-		--admin_email="younesoubllal@gmail.com" \
+		--admin_email="${wp_admin_email}" \
 		--skip-email \
 		--allow-root
 fi
 
 if ! wp user get "${WP_USER:-editor}" --field=ID --allow-root >/dev/null 2>&1; then
-	wp user create "${WP_USER:-editor}" "${WP_USER_EMAIL:-editor@example.invalid}" \
+	wp_user_email="${WP_USER_EMAIL:-editor@${DOMAIN_NAME}}"
+	if wp user get "${wp_user_email}" --field=ID --allow-root >/dev/null 2>&1; then
+		wp_user_email="${WP_USER:-editor}@${DOMAIN_NAME}"
+	fi
+	wp user create "${WP_USER:-editor}" "${wp_user_email}" \
 		--user_pass="${WP_USER_PASSWORD:-$PASSWORD}" \
 		--role=editor \
 		--allow-root
