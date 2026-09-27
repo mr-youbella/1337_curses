@@ -24,13 +24,17 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
         exit 1
     fi
 
-    mysql -u root << EOF
-ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
-CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;
-CREATE USER IF NOT EXISTS '${USER}'@'%' IDENTIFIED BY '${PASSWORD}';
-GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${USER}'@'%';
-FLUSH PRIVILEGES;
-EOF
+    # Separate commands make an initialization failure visible immediately.
+    mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
+    mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;"
+    mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "CREATE USER IF NOT EXISTS '${USER}'@'%' IDENTIFIED BY '${PASSWORD}';"
+    mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${USER}'@'%';"
+    mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;"
+
+    if ! mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -Nse "SELECT 1 FROM mysql.user WHERE User = '${USER}' AND Host = '%';" | grep -qx '1'; then
+        echo "MariaDB did not create the WordPress database user." >&2
+        exit 1
+    fi
 
     mysqladmin -u root -p"${MYSQL_ROOT_PASSWORD}" shutdown
     wait "$pid"
