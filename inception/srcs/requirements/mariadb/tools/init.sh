@@ -10,9 +10,19 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
     mysqld --user=mysql --datadir=/var/lib/mysql --skip-networking &
     pid=$!
 
-    until mysqladmin ping --silent; do
+    database_ready=false
+    for attempt in $(seq 1 30); do
+        if mysqladmin ping --silent; then
+            database_ready=true
+            break
+        fi
         sleep 1
     done
+
+    if [ "$database_ready" != true ]; then
+        echo "MariaDB initialization timed out." >&2
+        exit 1
+    fi
 
     mysql -u root << EOF
 ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';

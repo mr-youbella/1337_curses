@@ -33,10 +33,20 @@ if ! command -v wp >/dev/null 2>&1; then
 	chmod +x /usr/local/bin/wp
 fi
 
-until mysql -h mariadb -u${USER} -p${PASSWORD} -e "SELECT 1;" >/dev/null 2>&1; do
-	echo "Waiting for MariaDB auth..."
+database_ready=false
+for attempt in $(seq 1 30); do
+	if mysql -h mariadb -u"${USER}" -p"${PASSWORD}" -e "SELECT 1;" >/dev/null 2>&1; then
+		database_ready=true
+		break
+	fi
+	echo "Waiting for MariaDB auth (${attempt}/30)..."
 	sleep 2
 done
+
+if [ "$database_ready" != true ]; then
+	echo "MariaDB did not become available in time." >&2
+	exit 1
+fi
 
 if ! wp core is-installed --allow-root; then
 	wp core install \
@@ -57,8 +67,8 @@ if ! wp user get "${WP_USER:-editor}" --field=ID --allow-root >/dev/null 2>&1; t
 fi
 
 if wp core is-installed --allow-root; then
-	wp plugin install redis-cache --activate --allow-root || true
-	wp redis enable --allow-root || true
+	wp plugin install redis-cache --activate --allow-root
+	wp redis enable --allow-root
 fi
 
 exec php-fpm8.2 -F
