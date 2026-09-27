@@ -28,6 +28,7 @@ Projects I completed at School 1337 included in Curses 42.
 | [cpp07](https://github.com/mr-youbella/1337_curses/tree/main/cpp07) | 100 |
 | [cpp08](https://github.com/mr-youbella/1337_curses/tree/main/cpp08) | 100 |
 | [cpp09](https://github.com/mr-youbella/1337_curses/tree/main/cpp09) | 100 |
+| [ft_irc](https://github.com/mr-youbella/1337_curses/tree/main/ft_irc) | 125 |
 | [inception](https://github.com/mr-youbella/1337_curses/tree/main/inception) | WORKING... |
 | Exam Rank 02 | 100 |
 | Exam Rank 03 | 100 |
