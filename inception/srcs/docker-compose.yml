@@ -119,18 +119,5 @@ networks:
 
 volumes:
   wordpress_data:
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/${USER}/data/wordpress
   db_data:
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/${USER}/data/mariadb
-
   portainer_data:
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/${USER}/data/portainer
