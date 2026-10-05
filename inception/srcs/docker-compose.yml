@@ -7,11 +7,6 @@ services:
       - inception
     volumes:
       - db_data:/var/lib/mysql
-    environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      USER: ${USER}
-      PASSWORD: ${PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     restart: always
     env_file:
       - .env
@@ -29,12 +24,6 @@ services:
       - inception
     volumes:
       - wordpress_data:/var/www/html
-    environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      USER: ${USER}
-      PASSWORD: ${PASSWORD}
-      MYSQL_HOST: mariadb
-      REDIS_HOST: redis
     restart: always
     env_file:
       - .env
