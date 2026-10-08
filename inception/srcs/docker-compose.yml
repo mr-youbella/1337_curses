@@ -104,7 +104,6 @@ services:
 
 networks:
   inception:
-    driver: bridge
 
 volumes:
   wordpress_data:
