@@ -7,6 +7,7 @@ RUN sed -i 's|listen = .*|listen = 0.0.0.0:9000|' /etc/php/8.2/fpm/pool.d/www.co
 RUN mkdir -p /var/www/html
 
 COPY tools/setup.sh /setup.sh
+
 RUN chmod +x /setup.sh
 
 WORKDIR /var/www/html
