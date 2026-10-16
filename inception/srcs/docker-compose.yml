@@ -6,7 +6,7 @@ services:
     networks:
       - inception
     volumes:
-      - db_data:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
     restart: always
     env_file:
       - .env
