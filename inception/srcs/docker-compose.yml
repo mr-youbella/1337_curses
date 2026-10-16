@@ -107,5 +107,25 @@ networks:
 
 volumes:
   wordpress_data:
-  db_data:
+    driver: local
+    name: wordpress_data
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/youbella/data/wordpress
+
+  mariadb_data:
+    driver: local
+    name: mariadb_data
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/youbella/data/mariadb
+
   portainer_data:
+    driver: local
+    name: portainer_data
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/youbella/data/portainer
