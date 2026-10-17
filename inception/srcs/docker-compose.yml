@@ -1,6 +1,6 @@
 services:
   mariadb:
-    image: mariadb:inception
+    image: mariadb:youbella
     build: ./requirements/mariadb
     container_name: mariadb
     networks:
@@ -12,7 +12,7 @@ services:
       - .env
 
   wordpress:
-    image: wordpress:inception
+    image: wordpress:youbella
     build: ./requirements/wordpress
     container_name: wordpress
     depends_on:
@@ -29,7 +29,7 @@ services:
       - .env
 
   nginx:
-    image: nginx:inception
+    image: nginx:youbella
     build: ./requirements/nginx
     container_name: nginx
     ports:
@@ -47,7 +47,7 @@ services:
 
   # Bonus
   redis:
-    image: redis:inception
+    image: redis:youbella
     build: ./requirements/bonus/redis
     container_name: redis
     networks:
@@ -61,7 +61,7 @@ services:
     env_file:
       - .env
   ftp:
-    image: ftp:inception
+    image: ftp:youbella
     build: ./requirements/bonus/ftp
     container_name: ftp
     depends_on:
@@ -78,7 +78,7 @@ services:
       - .env
 
   adminer:
-    image: adminer:inception
+    image: adminer:youbella
     build: ./requirements/bonus/adminer
     container_name: adminer
     depends_on:
@@ -90,7 +90,7 @@ services:
     restart: always
 
   portainer:
-    image: portainer:inception
+    image: portainer:youbella
     build: ./requirements/bonus/portainer
     container_name: portainer
     networks:
