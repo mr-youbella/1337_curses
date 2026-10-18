@@ -104,6 +104,7 @@ services:
 
 networks:
   inception:
+    name: inception
 
 volumes:
   wordpress_data:
