@@ -1,7 +1,13 @@
 #!/bin/bash
-set -e
+set -eu
+
+: "${DOMAIN_NAME:?DOMAIN_NAME is required}"
+: "${MYSQL_DATABASE:?MYSQL_DATABASE is required}"
+: "${USER:?USER is required}"
+: "${PASSWORD:?PASSWORD is required}"
 
 cd /var/www/html
+files_created=false
 
 if [ ! -f "wp-config.php" ]; then
 
@@ -23,9 +29,8 @@ if [ ! -f "wp-config.php" ]; then
 	# Bonus Redis
 	sed -i "/<?php/a define('WP_REDIS_HOST', 'redis');" wp-config.php
 	sed -i "/<?php/a define('WP_REDIS_PORT', 6379);" wp-config.php
+	files_created=true
 fi
-
-chown -R www-data:www-data /var/www/html
 
 # Bonus Redis
 if ! command -v wp >/dev/null 2>&1; then
@@ -73,8 +78,18 @@ if ! wp user get "${WP_USER:-editor}" --field=ID --allow-root >/dev/null 2>&1; t
 fi
 
 if wp core is-installed --allow-root; then
-	wp plugin install redis-cache --activate --allow-root
+	if ! wp plugin is-installed redis-cache --allow-root; then
+		wp plugin install redis-cache --activate --allow-root
+		files_created=true
+	else
+		wp plugin activate redis-cache --allow-root
+	fi
 	wp redis enable --allow-root
+fi
+
+if [ "$files_created" = true ]; then
+	chown -R www-data:www-data /var/www/html
+	chmod -R g+rwX /var/www/html
 fi
 
 exec php-fpm8.2 -F

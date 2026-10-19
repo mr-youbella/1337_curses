@@ -9,13 +9,12 @@ up:
 	$(COMPOSE) up --build -d
 
 down:
-	$(COMPOSE) down
+	$(COMPOSE) down -remove-orphans
 
-clean:
-	$(COMPOSE) down --volumes --remove-orphans
+clean: down
 
-fclean: clean
-	docker system prune -af
+fclean:
+	$(COMPOSE) down --volumes --rmi all --remove-orphans
 
 re: fclean all
 
@@ -25,4 +24,4 @@ ps:
 logs:
 	$(COMPOSE) logs -f
 
-.PHONY: up down clean ps logs
+.PHONY: all up down clean fclean re ps logs

@@ -1,49 +1,40 @@
 #!/bin/bash
-set -e
+set -eu
+
+: "${MYSQL_DATABASE:?MYSQL_DATABASE is required}"
+: "${MYSQL_ROOT_PASSWORD:?MYSQL_ROOT_PASSWORD is required}"
+: "${USER:?USER is required}"
+: "${PASSWORD:?PASSWORD is required}"
 
 mkdir -p /run/mysqld
 chown -R mysql:mysql /run/mysqld /var/lib/mysql
 
-init_marker="/var/lib/mysql/.inception_initialized"
-
-if [ ! -f "$init_marker" ]; then
-	if [ ! -d "/var/lib/mysql/mysql" ]; then
-		mysql_install_db --user=mysql --datadir=/var/lib/mysql
-	fi
-
-	mysqld --user=mysql --datadir=/var/lib/mysql --skip-networking &
-	pid=$!
-
-	database_ready=false
-	for attempt in $(seq 1 30); do
-		if mysqladmin ping --silent; then
-			database_ready=true
-			break
-		fi
-		sleep 1
-	done
-
-	if [ "$database_ready" != true ]; then
-		echo "MariaDB initialization timed out." >&2
-		exit 1
-	fi
-
-	mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
-	mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;"
-	mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "CREATE USER IF NOT EXISTS '${USER}'@'%' IDENTIFIED BY '${PASSWORD}';"
-	mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${USER}'@'%';"
-	mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;"
-
-	if ! mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -Nse "SELECT 1 FROM mysql.user WHERE User = '${USER}' AND Host = '%';" | grep -qx '1'; then
-		echo "MariaDB did not create the WordPress database user." >&2
-		exit 1
-	fi
-
-	mysqladmin -u root -p"${MYSQL_ROOT_PASSWORD}" shutdown
-	wait "$pid"
-
-	touch "$init_marker"
-	chown mysql:mysql "$init_marker"
+if [ ! -d "/var/lib/mysql/mysql" ]; then
+	mariadb-install-db --user=mysql --datadir=/var/lib/mysql --skip-test-db
 fi
 
-exec mysqld --user=mysql --datadir=/var/lib/mysql
+sql_escape()
+{
+	printf '%s' "$1" | sed -e 's/\\/\\\\/g' -e "s/'/''/g"
+}
+
+db_name="$(printf '%s' "${MYSQL_DATABASE}" | sed 's/`/``/g')"
+root_password="$(sql_escape "${MYSQL_ROOT_PASSWORD}")"
+wp_user="$(sql_escape "${USER}")"
+wp_password="$(sql_escape "${PASSWORD}")"
+init_file="/run/mysqld/inception-init.sql"
+
+umask 077
+cat > "$init_file" <<EOF
+ALTER USER 'root'@'localhost' IDENTIFIED BY '${root_password}';
+CREATE DATABASE IF NOT EXISTS \`${db_name}\`;
+CREATE USER IF NOT EXISTS '${wp_user}'@'%' IDENTIFIED BY '${wp_password}';
+ALTER USER '${wp_user}'@'%' IDENTIFIED BY '${wp_password}';
+GRANT ALL PRIVILEGES ON \`${db_name}\`.* TO '${wp_user}'@'%';
+FLUSH PRIVILEGES;
+EOF
+
+chown mysql:mysql "$init_file"
+chmod 600 "$init_file"
+
+exec mysqld --user=mysql --datadir=/var/lib/mysql --console --init-file="$init_file"

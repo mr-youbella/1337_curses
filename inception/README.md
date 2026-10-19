@@ -47,7 +47,8 @@ Useful commands:
 
 ```bash
 make down     # Stop the stack
-make clean    # Stop it and remove its Docker volumes
+make clean    # Remove project containers and its network, while keeping data
+make fclean   # Also remove this project's images and persistent volumes
 make logs     # Follow service logs
 make ps       # Show service status
 ```
@@ -90,6 +91,6 @@ Docker named volumes are managed by Docker and persist independently from contai
 - [MariaDB documentation](https://mariadb.com/kb/en/documentation/)
 - [NGINX documentation](https://nginx.org/en/docs/)
 
-## AI usage
+### AI usage
 
 AI assistance was used to review the Compose configuration, diagnose container startup failures, improve shell-script error handling, and draft the documentation. All changes were reviewed by the author and must be tested on the Debian VM before submission.

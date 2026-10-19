@@ -1,6 +1,7 @@
 #!/bin/bash
+set -eu
 
-set -e
+: "${DOMAIN_NAME:?DOMAIN_NAME is required}"
 
 mkdir -p /etc/nginx/ssl
 
