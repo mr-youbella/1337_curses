@@ -7,9 +7,9 @@ services:
       - inception
     volumes:
       - mariadb_data:/var/lib/mysql
-    restart: always
     env_file:
       - .env
+    restart: always
 
   wordpress:
     image: wordpress:youbella
@@ -24,9 +24,9 @@ services:
       - inception
     volumes:
       - wordpress_data:/var/www/html
-    restart: always
     env_file:
       - .env
+    restart: always
 
   nginx:
     image: nginx:youbella
@@ -41,9 +41,9 @@ services:
     volumes:
       - wordpress_data:/var/www/html
       - ./requirements/nginx/static:/var/www/static:ro
-    restart: always
     env_file:
       - .env
+    restart: always
 
   # Bonus
   redis:
@@ -57,9 +57,10 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    restart: always
     env_file:
       - .env
+    restart: always
+
   ftp:
     image: ftp:youbella
     build: ./requirements/bonus/ftp
@@ -73,9 +74,9 @@ services:
     ports:
       - "21:21"
       - "10000-10100:10000-10100"
-    restart: always
     env_file:
       - .env
+    restart: always
 
   adminer:
     image: adminer:youbella
