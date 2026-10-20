@@ -25,6 +25,7 @@ wp_password="$(sql_escape "${PASSWORD}")"
 init_file="/run/mysqld/inception-init.sql"
 
 umask 077
+
 cat > "$init_file" <<EOF
 ALTER USER 'root'@'localhost' IDENTIFIED BY '${root_password}';
 CREATE DATABASE IF NOT EXISTS \`${db_name}\`;
