@@ -11,8 +11,6 @@ up:
 down:
 	$(COMPOSE) down -remove-orphans
 
-clean: down
-
 fclean:
 	$(COMPOSE) down --volumes --rmi all --remove-orphans
 
@@ -24,4 +22,4 @@ ps:
 logs:
 	$(COMPOSE) logs -f
 
-.PHONY: all up down clean fclean re ps logs
+.PHONY: all up down fclean re ps logs
