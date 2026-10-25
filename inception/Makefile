@@ -9,7 +9,7 @@ up:
 	$(COMPOSE) up --build -d
 
 down:
-	$(COMPOSE) down -remove-orphans
+	$(COMPOSE) down --remove-orphans
 
 fclean:
 	$(COMPOSE) down --volumes --rmi all --remove-orphans
