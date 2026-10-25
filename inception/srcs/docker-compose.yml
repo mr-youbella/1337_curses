@@ -18,6 +18,8 @@ services:
     depends_on:
       mariadb:
         condition: service_started
+      redis:
+        condition: service_healthy
     networks:
       - inception
     volumes:
@@ -34,22 +36,35 @@ services:
       - "443:443"
     depends_on:
       - wordpress
+      - static
     networks:
       - inception
     volumes:
       - wordpress_data:/var/www/html
-      - ./requirements/nginx/static:/var/www/static:ro
     env_file:
       - .env
     restart: always
 
   # Bonus
+  static:
+    image: static:youbella
+    build: ./requirements/bonus/static
+    networks:
+      - inception
+    restart: always
+
   redis:
     image: redis:youbella
     build: ./requirements/bonus/redis
     container_name: redis
     networks:
       - inception
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
     restart: always
 
   ftp:

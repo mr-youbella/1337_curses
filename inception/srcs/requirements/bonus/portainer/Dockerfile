@@ -16,4 +16,4 @@ RUN architecture="$(dpkg --print-architecture)" \
 
 EXPOSE 9443
 
-CMD ["/opt/portainer/portainer"]
+ENTRYPOINT ["/opt/portainer/portainer"]

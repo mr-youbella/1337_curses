@@ -15,4 +15,4 @@ RUN mkdir -p /var/www/adminer \
 
 EXPOSE 8080
 
-CMD ["php", "-S", "0.0.0.0:8080", "-t", "/var/www/adminer"]
+ENTRYPOINT ["php", "-S", "0.0.0.0:8080", "-t", "/var/www/adminer"]

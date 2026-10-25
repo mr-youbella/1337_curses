@@ -9,33 +9,33 @@ set -eu
 cd /var/www/html
 files_created=false
 
-if [ ! -f "wp-config.php" ]; then
-
-	echo "Downloading WordPress..."
-
-	wget "https://wordpress.org/wordpress-${WORDPRESS_VERSION:-7.1.2}.tar.gz" -O /tmp/wp.tar.gz
-	tar -xzf /tmp/wp.tar.gz -C /tmp
-
-	cp -r /tmp/wordpress/* /var/www/html
-	rm -rf /tmp/wp.tar.gz /tmp/wordpress
-
-	cp wp-config-sample.php wp-config.php
-
-	sed -i "s/database_name_here/${MYSQL_DATABASE}/g" wp-config.php
-	sed -i "s/username_here/${USER}/g" wp-config.php
-	sed -i "s/password_here/${PASSWORD}/g" wp-config.php
-	sed -i "s/localhost/mariadb/g" wp-config.php
-
-	# Bonus Redis
-	sed -i "/<?php/a define('WP_REDIS_HOST', 'redis');" wp-config.php
-	sed -i "/<?php/a define('WP_REDIS_PORT', 6379);" wp-config.php
-	files_created=true
-fi
-
-# Bonus Redis
 if ! command -v wp >/dev/null 2>&1; then
 	curl -fsSL "https://github.com/wp-cli/wp-cli/releases/download/v${WP_CLI_VERSION:-2.12.0}/wp-cli-${WP_CLI_VERSION:-2.12.0}.phar" -o /usr/local/bin/wp
 	chmod +x /usr/local/bin/wp
+fi
+
+if [ ! -f "wp-load.php" ]; then
+	echo "Downloading WordPress..."
+
+	wp core download \
+		--version="${WORDPRESS_VERSION:-7.1.2}" \
+		--allow-root
+	files_created=true
+fi
+
+if [ ! -f "wp-config.php" ]; then
+	wp config create \
+		--dbname="${MYSQL_DATABASE}" \
+		--dbuser="${USER}" \
+		--dbpass="${PASSWORD}" \
+		--dbhost=mariadb \
+		--skip-check \
+		--allow-root
+
+	# Bonus Redis
+	wp config set WP_REDIS_HOST redis --allow-root
+	wp config set WP_REDIS_PORT 6379 --raw --allow-root
+	files_created=true
 fi
 
 database_ready=false
