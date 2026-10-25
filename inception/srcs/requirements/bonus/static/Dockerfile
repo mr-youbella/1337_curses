@@ -5,6 +5,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY html/ /var/www/html/
+
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
