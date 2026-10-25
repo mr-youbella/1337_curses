@@ -10,12 +10,12 @@ mkdir -p /run/mysqld
 chown -R mysql:mysql /run/mysqld /var/lib/mysql
 
 if [ ! -d "/var/lib/mysql/mysql" ]; then
-	mariadb-install-db --user=mysql --datadir=/var/lib/mysql --skip-test-db
+	mariadb-install-db --user=mysql --datadir=/var/lib/mysql
 fi
 
 sql_escape()
 {
-	printf '%s' "$1" | sed -e 's/\\/\\\\/g' -e "s/'/''/g"
+	printf '%s' "$1" | sed -z -e 's/\\/\\\\/g' -e "s/'/''/g" -e 's/\n/\\n/g';
 }
 
 db_name="$(printf '%s' "${MYSQL_DATABASE}" | sed 's/`/``/g')"
