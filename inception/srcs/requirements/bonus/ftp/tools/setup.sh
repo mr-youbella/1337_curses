@@ -15,7 +15,6 @@ chmod 755 /var/run/vsftpd/empty
 config_file=/tmp/vsftpd.conf
 cp /etc/vsftpd.conf "$config_file"
 
-# A client outside Docker needs the VM's reachable address in the PASV reply.
 if [ -n "${FTP_PASV_ADDRESS:-}" ]; then
     printf '\npasv_address=%s\n' "$FTP_PASV_ADDRESS" >> "$config_file"
 fi

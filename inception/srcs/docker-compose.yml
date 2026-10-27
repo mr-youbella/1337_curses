@@ -49,6 +49,7 @@ services:
   static:
     image: static:youbella
     build: ./requirements/bonus/static
+    container_name: static
     networks:
       - inception
     restart: always

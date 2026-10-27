@@ -17,9 +17,7 @@ fi
 if [ ! -f "wp-load.php" ]; then
 	echo "Downloading WordPress..."
 
-	wp core download \
-		--version="${WORDPRESS_VERSION:-7.1.2}" \
-		--allow-root
+	wp core download --version="${WORDPRESS_VERSION:-7.1.2}" --allow-root
 	files_created=true
 fi
 
