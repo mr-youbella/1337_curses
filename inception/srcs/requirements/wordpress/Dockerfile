@@ -12,4 +12,6 @@ RUN chmod +x /setup.sh
 
 WORKDIR /var/www/html
 
+EXPOSE 9000
+
 ENTRYPOINT ["/setup.sh"]
