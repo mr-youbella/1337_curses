@@ -2,7 +2,7 @@
 
 An interactive shell with quoting, environment expansion, builtins, pipelines, and redirections.
 
-[Repository](../README.md) · **C / Unix processes / Readline** · **Score: 101**
+[Repository](../README.md) · **C / Unix processes / Readline** · **Score: 101** · **Team project**
 
 ## From prompt to process
 

@@ -16,7 +16,9 @@ C foundations, Unix systems, graphics, networking, and the C++98 modules.
 
 This is my collection of projects from the 1337 / 42 curriculum. It starts with a C utility library and grows into interactive programs: a shell, a raycasting engine, an IRC server, and a containerized WordPress stack.
 
-Each project has its own README explaining the implementation, build requirements, and usage. The [Subjects](Subjects/) directory holds the accompanying project PDFs. Source code is the reference for the features described here.
+Implemented projects have their own READMEs explaining the code, build requirements, and usage. The [Subjects](Subjects/) directory holds the accompanying project PDFs. Born2beroot has a subject-based overview, and `ft_transcendence` is currently in progress with its subject included here.
+
+[minishell](minishell/), [cub3D](cub3D/), [ft_irc](ft_irc/), and [ft_transcendence](ft_transcendence/) are team projects. Their guides identify that shared work; implementation details are based on the source available in this collection.
 
 ## Projects
 
@@ -42,22 +44,29 @@ Scores below preserve the evaluations recorded in this portfolio. They describe 
 | Project | Description | Score |
 | --- | --- | ---: |
 | [minitalk](minitalk/) | Client/server text transmission through Unix signals, with a Unicode bonus. | 125 |
-| [minishell](minishell/) | Interactive shell with builtins, quoting, expansion, pipes, and redirections. | 101 |
+| [minishell](minishell/) | Team project: interactive shell with builtins, quoting, expansion, pipes, and redirections. | 101 |
 
 ### Graphics and games
 
 | Project | Description | Score |
 | --- | --- | ---: |
 | [so_long](so_long/) | MiniLibX tile game with map validation, collectibles, and animated bonus hazards. | 125 |
-| [cub3D](cub3D/) | MLX42 raycaster with textured walls, a minimap, doors, and animated overlays. | 125 |
+| [cub3D](cub3D/) | Team project: MLX42 raycaster with textured walls, a minimap, doors, and animated overlays. | 125 |
 
 ### Networking and infrastructure
 
 | Project | Description | Score |
 | --- | --- | ---: |
+| [Born2beroot](Born2beroot/) | Linux server administration in a VM; subject and overview included, without the VM or configuration. | 125 |
 | [netPractice](netPractice/) | Ten saved IPv4 addressing and routing exercises with the supplied simulator. | 100 |
-| [ft_irc](ft_irc/) | C++98 IRC server with non-blocking sockets, channel modes, and a bot. | 125 |
+| [ft_irc](ft_irc/) | Team project: C++98 IRC server with non-blocking sockets, channel modes, and a bot. | 125 |
 | [inception](inception/) | Docker Compose stack for WordPress, MariaDB, NGINX, and five bonus services. | 125 |
+
+### Web applications — in progress
+
+| Project | Description | Status |
+| --- | --- | --- |
+| [ft_transcendence](ft_transcendence/) | Team web application project; subject and overview available while development continues. | In progress |
 
 ### C++ modules
 
@@ -78,11 +87,10 @@ Each module contains independently built exercises. Their READMEs form a linked 
 
 ### Other recorded evaluations
 
-These results are retained from the original project index. Their source or configuration directories are not part of this repository.
+These exam results are retained from the original project index. Exam source code is not included in this repository.
 
 | Evaluation | Score |
 | --- | ---: |
-| Born2beroot | 125 |
 | Exam Rank 02 | 100 |
 | Exam Rank 03 | 100 |
 | Exam Rank 04 | 100 |
@@ -105,6 +113,7 @@ These results are retained from the original project index. Their source or conf
 1337_curses/
 ├── README.md
 ├── Subjects/          Project subject PDFs
+├── Born2beroot/       Subject-based overview; VM/configuration not included
 ├── libft/             Reusable C foundations
 ├── ft_printf/
 ├── get_next_line/
@@ -117,6 +126,7 @@ These results are retained from the original project index. Their source or conf
 ├── netPractice/       Network configurations and supplied simulator
 ├── ft_irc/            IRC server
 ├── inception/         Container configuration and service guides
+├── ft_transcendence/  In-progress team project; overview only
 └── cpp00/ … cpp09/    C++ modules, each divided into exNN directories
 ```
 
@@ -129,8 +139,10 @@ cd 1337_curses
 
 Choose a project from the tables and read its README before building. There is no repository-wide build target: most C programs have local Makefiles, Philosophers builds in two subdirectories, C++ exercises build individually, and `get_next_line` is compiled with a caller. netPractice opens in a browser; Inception starts through Docker Compose.
 
+Born2beroot and `ft_transcendence` currently provide documentation and subject references in this collection, with no runnable project files.
+
 Several projects retain their original macOS setup, including graphics framework links, Homebrew library paths, or platform-specific headers. Inception's supplied storage paths target a Linux VM. The individual guides describe those requirements alongside the relevant commands.
 
 ---
 
-Built and maintained by [mr-youbella](https://github.com/mr-youbella) · 1337 / 42 Network
+Portfolio maintained by [mr-youbella](https://github.com/mr-youbella) · 1337 / 42 Network

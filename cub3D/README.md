@@ -2,7 +2,7 @@
 
 A textured first-person view drawn from a two-dimensional map using raycasting.
 
-[Repository](../README.md) · **C / MLX42 / graphics** · **Score: 125**
+[Repository](../README.md) · **C / MLX42 / graphics** · **Score: 125** · **Team project**
 
 ## Rendering the scene
 

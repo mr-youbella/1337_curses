@@ -2,7 +2,7 @@
 
 An IRC server in C++98, with non-blocking clients, channels, operator commands, and a small channel bot.
 
-[Repository](../README.md) · **C++98 / TCP sockets / poll** · **Score: 125**
+[Repository](../README.md) · **C++98 / TCP sockets / poll** · **Score: 125** · **Team project**
 
 *Created as part of the curriculum by [youbella](https://profile.intra.42.fr/users/youbella) and [wkannouf](https://profile.intra.42.fr/users/wkannouf).*
 
