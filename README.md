@@ -2,7 +2,7 @@
 
 # 1337 Curses
 
-**My projects at 1337 · 42 Network**
+**My 42 common core projects at 1337 · 42 Network**
 
 C foundations, Unix systems, graphics, networking, and the C++98 modules.
 
@@ -14,7 +14,7 @@ C foundations, Unix systems, graphics, networking, and the C++98 modules.
 
 ## About this repository
 
-This is my collection of projects from the 1337 / 42 curriculum. It starts with a C utility library and grows into interactive programs: a shell, a raycasting engine, an IRC server, and a containerized WordPress stack.
+This repository brings together my projects from the 42 common core at 1337. It starts with a C utility library and grows into interactive programs: a shell, a raycasting engine, an IRC server, and a containerized WordPress stack.
 
 Implemented projects have their own READMEs explaining the code, build requirements, and usage. The [Subjects](Subjects/) directory holds the accompanying project PDFs. Born2beroot has a subject-based overview, and `ft_transcendence` is currently in progress with its subject included here.
 
@@ -87,7 +87,7 @@ Each module contains independently built exercises. Their READMEs form a linked 
 
 ### Other recorded evaluations
 
-These exam results are retained from the original project index. Exam source code is not included in this repository.
+I validated Exam Rank 06, the final exam in the 42 common core, with 100/100. My exam results are recorded below; exam source code is not included in this repository.
 
 | Evaluation | Score |
 | --- | ---: |
@@ -95,6 +95,7 @@ These exam results are retained from the original project index. Exam source cod
 | Exam Rank 03 | 100 |
 | Exam Rank 04 | 100 |
 | Exam Rank 05 | 100 |
+| Exam Rank 06 | 100 |
 
 ## Technical skills
 
